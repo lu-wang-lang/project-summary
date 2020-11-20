@@ -21,7 +21,5 @@ export default {
 
 <style scoped>
 .home {
-  /* width: 100vw;
-  height: 100vh; */
 }
 </style>
