@@ -88,7 +88,7 @@ body {
       color: white;
     }
     .app-elements {
-      width: 192px;
+      width: 220px;
       height: 50px;
       padding: 15px 0px;
       padding-right: 57px;
@@ -104,12 +104,15 @@ body {
           display: inline-block;
           cursor: pointer;
         }
+        .el-badge__content.is-fixed {
+          right: 40px;
+        }
       }
       .user-container {
         flex: 1;
         display: flex;
         align-items: center;
-        padding-left: 20px;
+        padding-left: 25px;
         .user-img {
           width: 50px;
           height: 50px;
