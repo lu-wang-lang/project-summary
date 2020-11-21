@@ -3,25 +3,27 @@
     <div class="app-top">
       <div class="app-name">教育后台管理系统</div>
       <div class="app-elements">
-        <el-badge :value="200"
-                  :max="99"
-                  class="item badge-container">
+        <el-badge :value="2" :max="99" class="item badge-container">
           <i class="el-icon-bell message-icon"></i>
         </el-badge>
         <div class="user-container">
-          <img :src="userImg"
-               class="user-img" />
+          <img :src="userImg" class="user-img" />
           <div class="user-name">
             <el-dropdown trigger="click">
               <span class="el-dropdown-link">
-                {{userName}}<i class="el-icon-arrow-down el-icon--right"></i>
+                {{ userName }}<i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item icon="el-icon-plus">黄金糕</el-dropdown-item>
-                <el-dropdown-item icon="el-icon-circle-plus">狮子头</el-dropdown-item>
-                <el-dropdown-item icon="el-icon-circle-plus-outline">螺蛳粉</el-dropdown-item>
-                <el-dropdown-item icon="el-icon-check">双皮奶</el-dropdown-item>
-                <el-dropdown-item icon="el-icon-circle-check">蚵仔煎</el-dropdown-item>
+                <el-dropdown-item
+                  icon="el-icon-user"
+                  @click.native="clickDropMenu('user')"
+                  >个人信息</el-dropdown-item
+                >
+                <el-dropdown-item
+                  icon="el-icon-switch-button"
+                  @click.native="clickDropMenu('logout')"
+                  >安全退出</el-dropdown-item
+                >
               </el-dropdown-menu>
             </el-dropdown>
           </div>
@@ -61,6 +63,19 @@ export default {
       userName: '王小塔',
       userImg: require('./assets/images/avatar.png')
     }
+  },
+  methods: {
+    clickDropMenu (type) {
+      switch (type) {
+        case 'user':
+          alert(`跳转${type}页面`)
+          break
+        case 'logout':
+          alert(`安全退出`)
+          break
+        default: break
+      }
+    }
   }
 }
 </script>
@@ -77,14 +92,18 @@ body {
   height: 100%;
   .app-top {
     width: 100%;
-    height: 80px;
+    height: 60px;
     background: #38a28a;
     display: flex;
     justify-content: space-between;
     align-items: center;
     .app-name {
-      padding: 22px 24px;
-      font-size: 24px;
+      width: 240px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
       color: white;
     }
     .app-elements {
@@ -97,7 +116,7 @@ body {
       .badge-container {
         width: 55px;
         .message-icon {
-          font-size: 25px;
+          font-size: 23px;
           color: white;
           width: 55px;
           border-right: 1px solid white;
@@ -107,6 +126,9 @@ body {
         .el-badge__content.is-fixed {
           right: 40px;
         }
+        .el-badge__content {
+          background: #ff9502;
+        }
       }
       .user-container {
         flex: 1;
@@ -114,8 +136,8 @@ body {
         align-items: center;
         padding-left: 25px;
         .user-img {
-          width: 50px;
-          height: 50px;
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
         }
         .user-name {
@@ -139,13 +161,14 @@ body {
   }
   .app-container {
     width: 100%;
-    height: calc(100% - 80px);
+    height: calc(100% - 60px);
     display: flex;
     .app-left {
       width: 240px;
-      background: #4a5259;
+      background: rgb(67, 74, 80);
     }
     .main-container {
+      padding: 20px;
     }
   }
 }
