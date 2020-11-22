@@ -1,16 +1,62 @@
 <template>
   <div class="home">
-    <div class="title">
-      这里是首页
+    <div class="summary">
+      <div class="title">营收概况</div>
+      <div class="container">
+        <div class="order"
+             :style="'background:'+order.background"
+             :title="order.number"
+             v-for="(order,index) of orderList"
+             :key="index">
+          <div class="order-img">
+            <img :src="order.imgSrc" />
+          </div>
+          <div class="order-desc-cnotainer">
+            <div class="order-desc">{{order.title}}</div>
+            <div class="order-number">{{order.number}}</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="tab"
-         @click="moveCourseList">去课程列表页面</div>
+    <div class="todo-events">
+      <div class="title">待办事项</div>
+      <div class="container"></div>
+    </div>
+    <div class="static">
+      <div class="title">营收统计</div>
+      <div class="container"></div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Home',
+  data () {
+    return {
+      orderList: [{
+        imgSrc: require('../assets/images/order-today.svg'),
+        title: '今日订单收入',
+        number: '￥6666.66',
+        background: '#ff7970'
+      }, {
+        imgSrc: require('../assets/images/order-7.svg'),
+        title: '今日订单数量',
+        number: 66,
+        background: '#FFD344'
+      }, {
+        imgSrc: require('../assets/images/order-7.svg'),
+        title: '7日内订单收入',
+        number: '￥6666.66',
+        background: '#4FCCB0'
+      }, {
+        imgSrc: require('../assets/images/order-7.svg'),
+        title: '7日内订单数量',
+        number: 789,
+        background: '#648CFF'
+      }]
+    }
+  },
   methods: {
     moveCourseList () {
       this.$route.push('./courseList')
@@ -19,7 +65,78 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .summary,
+  .todo-events,
+  .static {
+    width: 100%;
+    height: 206px; //45px
+    background: white;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  .todo-events {
+    height: 206px;
+  }
+  .static {
+    height: 469px;
+  }
+  .title {
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .container {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  .order {
+    width: calc((100% - 60px) / 4);
+    display: flex;
+    margin-right: 20px;
+    border-radius: 5px;
+    color: white;
+    padding: 30px;
+  }
+  .order-img {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  .order-desc-cnotainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    line-height: 1.5;
+    font-size: 24px;
+    .order-desc {
+      font-size: 14px;
+    }
+  }
+  .order:last-child {
+    margin-right: 0px;
+  }
 }
 </style>

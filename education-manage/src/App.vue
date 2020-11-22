@@ -3,27 +3,24 @@
     <div class="app-top">
       <div class="app-name">教育后台管理系统</div>
       <div class="app-elements">
-        <el-badge :value="2" :max="99" class="item badge-container">
+        <el-badge :value="2"
+                  :max="99"
+                  class="item badge-container">
           <i class="el-icon-bell message-icon"></i>
         </el-badge>
         <div class="user-container">
-          <img :src="userImg" class="user-img" />
+          <img :src="userImg"
+               class="user-img" />
           <div class="user-name">
             <el-dropdown trigger="click">
               <span class="el-dropdown-link">
                 {{ userName }}<i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item
-                  icon="el-icon-user"
-                  @click.native="clickDropMenu('user')"
-                  >个人信息</el-dropdown-item
-                >
-                <el-dropdown-item
-                  icon="el-icon-switch-button"
-                  @click.native="clickDropMenu('logout')"
-                  >安全退出</el-dropdown-item
-                >
+                <el-dropdown-item icon="el-icon-user"
+                                  @click.native="clickDropMenu('user')">个人信息</el-dropdown-item>
+                <el-dropdown-item icon="el-icon-switch-button"
+                                  @click.native="clickDropMenu('logout')">安全退出</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </div>
@@ -35,6 +32,11 @@
         <side-menu></side-menu>
       </div>
       <div class="main-container">
+        <el-breadcrumb separator="/"
+                       class="bread">
+          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <!-- <el-breadcrumb-item>活动详情</el-breadcrumb-item> -->
+        </el-breadcrumb>
         <router-view />
       </div>
     </div>
@@ -47,6 +49,8 @@ import {
   DropdownMenu,
   DropdownItem,
   Badge,
+  Breadcrumb,
+  BreadcrumbItem,
 } from "element-ui";
 import SideMenu from '@/components/Home/sideMenu'
 export default {
@@ -57,6 +61,8 @@ export default {
     'el-dropdown-menu': DropdownMenu,
     'el-dropdown-item': DropdownItem,
     'el-badge': Badge,
+    'el-breadcrumb': Breadcrumb,
+    'el-breadcrumb-item': BreadcrumbItem
   },
   data () {
     return {
@@ -163,12 +169,23 @@ body {
     width: 100%;
     height: calc(100% - 60px);
     display: flex;
+    overflow: hidden;
     .app-left {
       width: 240px;
       background: rgb(67, 74, 80);
     }
     .main-container {
       padding: 20px;
+      flex: 1;
+      overflow-y: auto;
+      background: #ededed;
+      .bread {
+        width: 100%;
+        height: 25px;
+      }
+      .el-breadcrumb__inner {
+        font-weight: 700;
+      }
     }
   }
 }

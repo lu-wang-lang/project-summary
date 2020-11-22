@@ -1,53 +1,58 @@
 <template>
   <div class="side-menu">
-    <el-menu
-      default-active="1"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      text-color="#fff"
-      background-color=" rgb(67, 74, 80)"
-      active-text-color="white"
-      unique-opened="true"
-    >
+    <el-menu default-active="1"
+             class="el-menu-vertical-demo"
+             @open="handleOpen"
+             @close="handleClose"
+             text-color="#fff"
+             background-color=" rgb(67, 74, 80)"
+             active-text-color="white"
+             :unique-opened="true">
       <el-menu-item index="1">
-        <img :src="homeImg" class="menu-icon mgt" />
-        首页</el-menu-item
-      >
+        <img :src="homeImg"
+             class="menu-icon mgt" />
+        首页
+      </el-menu-item>
       <el-menu-item index="2">
-        <img :src="booksImg" class="menu-icon mgt" />课程管理</el-menu-item
-      >
+        <img :src="booksImg"
+             class="menu-icon mgt" />课程管理
+      </el-menu-item>
       <el-submenu index="3">
         <template slot="title">
-          <img :src="listImg" class="menu-icon" /><span>订单管理</span>
+          <img :src="listImg"
+               class="menu-icon" /><span>订单管理</span>
         </template>
         <el-menu-item index="3-1">订单</el-menu-item>
         <el-menu-item index="3-2">退款</el-menu-item>
       </el-submenu>
       <el-submenu index="4">
         <template slot="title">
-          <img :src="accountImg" class="menu-icon" /><span>用户管理</span>
+          <img :src="accountImg"
+               class="menu-icon" /><span>用户管理</span>
         </template>
         <el-menu-item index="4-1">学员</el-menu-item>
         <el-menu-item index="4-2">讲师</el-menu-item>
       </el-submenu>
       <el-submenu index="5">
         <template slot="title">
-          <img :src="msgImg" class="menu-icon" /><span>咨询管理</span>
+          <img :src="msgImg"
+               class="menu-icon" /><span>咨询管理</span>
         </template>
         <el-menu-item index="5-1">轮播图</el-menu-item>
         <el-menu-item index="5-2">文章</el-menu-item>
       </el-submenu>
       <el-submenu index="6">
         <template slot="title">
-          <img :src="tagsImg" class="menu-icon" /><span>促销管理</span>
+          <img :src="tagsImg"
+               class="menu-icon" /><span>促销管理</span>
         </template>
         <el-menu-item index="6-1">秒杀活动</el-menu-item>
         <el-menu-item index="6-2">优惠券</el-menu-item>
       </el-submenu>
       <el-menu-item index="7">
-        <img :src="settingImg" class="menu-icon mgt" />系统设置</el-menu-item
-      >
+        <img :src="settingImg"
+             class="menu-icon mgt" />系统设置
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -126,6 +131,14 @@ export default {
         title: '系统设置',
         path: '/'
       }]
+    }
+  },
+  methods: {
+    handleOpen () {
+
+    },
+    handleClose () {
+
     }
   }
 }
