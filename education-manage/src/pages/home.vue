@@ -27,7 +27,29 @@
     </div>
     <div class="todo-events">
       <div class="title">待办事项</div>
-      <div class="container"></div>
+      <div class="container">
+        <div class="event-container"
+             v-for="(event,index) of eventList"
+             :key="index">
+          <div class="event-wrap">
+            <div class="event-img"
+                 :style="'background:'+event.background">
+              <img :src="event.imgSrc">
+            </div>
+            <div class="event-desc-container">
+              <count-to :startVal='0'
+                        :endVal='event.number'
+                        :duration='3000'
+                        :suffix="'个'"
+                        class="event-number"
+                        :autoplay="true"></count-to>
+              <div class="event-desc">{{event.title}}</div>
+            </div>
+          </div>
+          <div class="event-line"
+               v-if="index!==2"></div>
+        </div>
+      </div>
     </div>
     <div class="static">
       <div class="title">营收统计</div>
@@ -77,6 +99,22 @@ export default {
         prefix: '',
         suffix: '个',
         decimals: 0
+      }],
+      eventList: [{
+        title: '待付款订单',
+        imgSrc: require('../assets/images/antOutline-pay-circle.svg'),
+        background: '#F4C735',
+        number: 50
+      }, {
+        title: '待确认订单',
+        imgSrc: require('../assets/images/antOutline-check-circle.svg'),
+        background: '#05ABED',
+        number: 25
+      }, {
+        title: '待处理退款',
+        imgSrc: require('../assets/images/antOutline-money-collect.svg'),
+        background: '#F44235',
+        number: 10
       }]
     }
   },
@@ -130,36 +168,80 @@ export default {
   .order {
     width: calc((100% - 60px) / 4);
     display: flex;
+    align-items: center;
     margin-right: 20px;
     border-radius: 5px;
     color: white;
     padding: 30px;
-  }
-  .order-img {
-    width: 50px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 20px;
-    img {
+    .order-img {
       width: 50px;
-      height: 50px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      img {
+        width: 50px;
+        height: 50px;
+      }
     }
-  }
-  .order-desc-cnotainer {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    font-weight: 700;
-    line-height: 1.5;
-    font-size: 24px;
-    .order-desc {
-      font-size: 14px;
+    .order-desc-cnotainer {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      font-weight: 700;
+      line-height: 1.5;
+      font-size: 24px;
+      .order-desc {
+        font-size: 14px;
+        font-weight: normal;
+      }
     }
   }
   .order:last-child {
     margin-right: 0px;
+  }
+
+  .event-container {
+    width: calc(100% / 3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    .event-wrap {
+      display: flex;
+      align-items: center;
+      padding: 25px 40px;
+      .event-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+      }
+      .event-desc-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.5;
+      }
+      .event-desc {
+        font-size: 14px;
+        font-weight: normal;
+      }
+    }
+    .event-line {
+      width: 1px;
+      height: 50px;
+      background: #d3d3d3;
+      position: absolute;
+      right: 0px;
+    }
   }
 }
 </style>
