@@ -13,7 +13,7 @@
           </div>
           <div class="order-desc-cnotainer">
             <div class="order-desc">{{order.title}}</div>
-            <el-tooltip :content="order.number"
+            <el-tooltip :content="order.number.toString()"
                         placement="bottom"
                         effect="dark">
               <div slot="content"
@@ -44,7 +44,7 @@
               <img :src="event.imgSrc">
             </div>
             <div class="event-desc-container">
-              <el-tooltip :content="event.number"
+              <el-tooltip :content="event.number.toString()"
                           placement="bottom"
                           effect="dark">
                 <div slot="content"
