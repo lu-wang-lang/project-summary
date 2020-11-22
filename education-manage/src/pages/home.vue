@@ -13,7 +13,12 @@
           </div>
           <div class="order-desc-cnotainer">
             <div class="order-desc">{{order.title}}</div>
-            <div class="order-number">{{order.number}}</div>
+            <count-to :startVal='0'
+                      :endVal='order.number'
+                      :duration='3000'
+                      :prefix="order.prefix"
+                      :decimals="order.decimals"
+                      class="order-number"></count-to>
           </div>
         </div>
       </div>
@@ -30,30 +35,42 @@
 </template>
 
 <script>
+import countTo from 'vue-count-to';  //https://www.cnblogs.com/tuspring/p/9801603.html
 export default {
   name: 'Home',
+  components: {
+    countTo
+  },
   data () {
     return {
       orderList: [{
         imgSrc: require('../assets/images/order-today.svg'),
         title: '今日订单收入',
-        number: '￥6666.66',
-        background: '#ff7970'
+        number: 6666.66,
+        background: '#ff7970',
+        prefix: '￥',
+        decimals: 2
       }, {
         imgSrc: require('../assets/images/order-7.svg'),
         title: '今日订单数量',
         number: 66,
-        background: '#FFD344'
+        background: '#FFD344',
+        prefix: '',
+        decimals: 0
       }, {
         imgSrc: require('../assets/images/order-7.svg'),
         title: '7日内订单收入',
-        number: '￥6666.66',
-        background: '#4FCCB0'
+        number: 6666.66,
+        background: '#4FCCB0',
+        prefix: '￥',
+        decimals: 2
       }, {
         imgSrc: require('../assets/images/order-7.svg'),
         title: '7日内订单数量',
         number: 789,
-        background: '#648CFF'
+        background: '#648CFF',
+        prefix: '',
+        decimals: 0
       }]
     }
   },
