@@ -17,8 +17,10 @@
                       :endVal='order.number'
                       :duration='3000'
                       :prefix="order.prefix"
+                      :suffix="order.suffix"
                       :decimals="order.decimals"
-                      class="order-number"></count-to>
+                      class="order-number"
+                      :autoplay="true"></count-to>
           </div>
         </div>
       </div>
@@ -49,6 +51,7 @@ export default {
         number: 6666.66,
         background: '#ff7970',
         prefix: '￥',
+        suffix: '',
         decimals: 2
       }, {
         imgSrc: require('../assets/images/order-7.svg'),
@@ -56,13 +59,15 @@ export default {
         number: 66,
         background: '#FFD344',
         prefix: '',
+        suffix: '个',
         decimals: 0
       }, {
-        imgSrc: require('../assets/images/order-7.svg'),
+        imgSrc: require('../assets/images/order-today.svg'),
         title: '7日内订单收入',
         number: 6666.66,
         background: '#4FCCB0',
         prefix: '￥',
+        suffix: '',
         decimals: 2
       }, {
         imgSrc: require('../assets/images/order-7.svg'),
@@ -70,6 +75,7 @@ export default {
         number: 789,
         background: '#648CFF',
         prefix: '',
+        suffix: '个',
         decimals: 0
       }]
     }
