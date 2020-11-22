@@ -40,7 +40,7 @@ export default {
           title: {
             text: ''
           },
-          color: ['#38A28A', '#648CFF'],
+          color: ['#38A28A', 'rgb(244, 66, 53)'],
           tooltip: {
             trigger: 'axis'
           },
@@ -83,12 +83,16 @@ export default {
     }
   },
   mounted () {
-    if (this.data.length > 0) {
-      this.init()
-    }
+    this.init()
   },
   watch: {
-    data: {
+    'data.data': {
+      handler (newVal, oldVal) {
+        this.init()
+      },
+      deep: true
+    },
+    'xAxis': {
       handler (newVal, oldVal) {
         this.init()
       },

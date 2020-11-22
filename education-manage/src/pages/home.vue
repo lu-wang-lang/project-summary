@@ -66,6 +66,7 @@
 <script>
 import countTo from 'vue-count-to';  //https://www.cnblogs.com/tuspring/p/9801603.html
 import LineStack from '../components/echart/line-stack'
+import util from '../utils/index.js'
 export default {
   name: 'Home',
   components: {
@@ -125,23 +126,25 @@ export default {
       }],
       staticData: {
         yAxisName: '（元）',
-        legend: ['本月订单总数', '本月订单总额'],
-        xAxis: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+        legend: ['订单总数', '订单总额'],
+        xAxis: [],
         data: [{
-          name: '本月订单总数',
+          name: '订单总数',
           type: 'line',
-          data: [120, 132, 101, 134, 90, 230, 210]
+          data: []
         }, {
-          name: '本月订单总额',
+          name: '订单总额',
           type: 'line',
-          data: [220, 182, 191, 234, 290, 330, 310]
+          data: []
         }]
       }
     }
   },
-  methods: {
-    moveCourseList () {
-      this.$route.push('./courseList')
+  mounted () {
+    this.staticData.xAxis = util.getDate()
+    for (let i = 0; i < this.staticData.xAxis.length; i++) {
+      this.staticData.data[0].data.push(util.getRadom(0, 9))
+      this.staticData.data[1].data.push(util.getRadom(0, 9))
     }
   }
 }
