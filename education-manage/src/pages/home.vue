@@ -53,17 +53,24 @@
     </div>
     <div class="static">
       <div class="title">营收统计</div>
-      <div class="container"></div>
+      <div class="container">
+        <line-stack :yAxisName="staticData.yAxisName"
+                    :xAxis="staticData.xAxis"
+                    :legend="staticData.legend"
+                    :data="staticData.data"></line-stack>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import countTo from 'vue-count-to';  //https://www.cnblogs.com/tuspring/p/9801603.html
+import LineStack from '../components/echart/line-stack'
 export default {
   name: 'Home',
   components: {
-    countTo
+    countTo,
+    LineStack,
   },
   data () {
     return {
@@ -115,7 +122,21 @@ export default {
         imgSrc: require('../assets/images/antOutline-money-collect.svg'),
         background: '#F44235',
         number: 10
-      }]
+      }],
+      staticData: {
+        yAxisName: '（元）',
+        legend: ['本月订单总数', '本月订单总额'],
+        xAxis: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+        data: [{
+          name: '本月订单总数',
+          type: 'line',
+          data: [120, 132, 101, 134, 90, 230, 210]
+        }, {
+          name: '本月订单总额',
+          type: 'line',
+          data: [220, 182, 191, 234, 290, 330, 310]
+        }]
+      }
     }
   },
   methods: {

@@ -5,11 +5,14 @@ import { Message, Loading, MessageBox } from "element-ui"
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
+import echarts from 'echarts'
 
 Vue.config.productionTip = false
 Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$loading = Loading.service;
+
+Vue.prototype.$echarts = echarts
 
 /* eslint-disable no-new */
 new Vue({
