@@ -66,7 +66,7 @@ export default {
               fontSize: 16
             },
             axisLabel: {
-              formatter: '${value}'
+              formatter: '{value}'
             }
           },
           series: _this.data
