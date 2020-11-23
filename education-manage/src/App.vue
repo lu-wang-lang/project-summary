@@ -34,7 +34,7 @@
       <div class="main-container">
         <el-breadcrumb separator="/"
                        class="bread">
-          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: bread.path }">{{bread.name}}</el-breadcrumb-item>
           <!-- <el-breadcrumb-item>活动详情</el-breadcrumb-item> -->
         </el-breadcrumb>
         <router-view />
@@ -67,7 +67,8 @@ export default {
   data () {
     return {
       userName: '王小塔',
-      userImg: require('./assets/images/avatar.png')
+      userImg: require('./assets/images/avatar.png'),
+      bread: this.$store.store.state.route
     }
   },
   methods: {
@@ -81,6 +82,14 @@ export default {
           break
         default: break
       }
+    }
+  },
+  watch: {
+    '$store.store.state.route': {
+      handler (newVal, oldVal) {
+        this.bread = this.$store.store.state.route
+      },
+      deep: true
     }
   }
 }

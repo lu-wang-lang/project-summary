@@ -1,5 +1,10 @@
 <template>
-  <div class="course-list">列表页</div>
+  <div class="course-list">
+    <div class="search-div">
+
+    </div>
+    <div class="table-div"></div>
+  </div>
 </template>
 
 <script>

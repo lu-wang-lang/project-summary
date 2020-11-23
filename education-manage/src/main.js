@@ -5,6 +5,7 @@ import { Message, Loading, MessageBox } from "element-ui"
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
+import store from './store'
 import echarts from 'echarts'
 
 Vue.config.productionTip = false
@@ -18,6 +19,7 @@ Vue.prototype.$echarts = echarts
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

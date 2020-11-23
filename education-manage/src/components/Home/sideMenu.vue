@@ -11,14 +11,16 @@
              :unique-opened="true">
       <el-menu-item index="1"
                     ref="1"
-                    data-link="/home">
+                    data-link="/home"
+                    data-name="首页">
         <img :src="homeImg"
              class="menu-icon mgt" />
         首页
       </el-menu-item>
       <el-menu-item index="2"
                     ref="2"
-                    data-link="/course-list">
+                    data-link="/course-list"
+                    data-name="课程管理">
         <img :src="booksImg"
              class="menu-icon mgt" />课程管理
       </el-menu-item>
@@ -100,7 +102,7 @@ export default {
         path: '/'
       }, {
         title: '课程管理',
-        path: '/'
+        path: '/course-list'
       }, {
         title: '订单管理',
         path: '',
@@ -158,7 +160,9 @@ export default {
     handleSelect (key, keyPath) {
       let path = this.$refs[keyPath]["$attrs"]["data-link"]
       if (path != this.oldPath) {
+        let name = this.$refs[keyPath]["$attrs"]["data-name"]
         this.oldPath = path
+        this.$store.store.commit('changeRoute', { path, name })
         this.$router.push(path)
       }
     }
