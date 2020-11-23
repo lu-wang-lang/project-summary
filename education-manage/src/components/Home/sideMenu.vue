@@ -2,73 +2,37 @@
   <div class="side-menu">
     <el-menu default-active="1"
              class="el-menu-vertical-demo"
-             @open="handleOpen"
-             @close="handleClose"
-             @select="handleSelect"
              text-color="#fff"
              background-color=" rgb(67, 74, 80)"
              active-text-color="white"
-             :unique-opened="true">
-      <el-menu-item index="1"
-                    ref="1"
-                    data-link="/home"
-                    data-name="首页">
-        <img :src="homeImg"
-             class="menu-icon mgt" />
-        首页
-      </el-menu-item>
-      <el-menu-item index="2"
-                    ref="2"
-                    data-link="/course-list"
-                    data-name="课程管理">
-        <img :src="booksImg"
-             class="menu-icon mgt" />课程管理
-      </el-menu-item>
-      <el-submenu index="3">
-        <template slot="title">
-          <img :src="listImg"
-               class="menu-icon" /><span>订单管理</span>
+             :unique-opened="true"
+             @select="handleSelect">
+      <template v-for="item of menuList">
+        <template v-if="item.children && item.children.length>0">
+          <el-submenu :key="item.index"
+                      :index="item.index">
+            <template slot="title">
+              <img :src="item.imgSrc"
+                   class="menu-icon" /><span>{{item.title}}</span>
+            </template>
+            <el-menu-item :index="child.index"
+                          :ref="child.index"
+                          v-for="(child,idx) of item.children"
+                          @click="handleClickMenu(child)"
+                          :key="idx">{{child.title}}</el-menu-item>
+          </el-submenu>
         </template>
-        <el-menu-item index="3-1"
-                      ref="3-1">订单</el-menu-item>
-        <el-menu-item index="3-2"
-                      ref="3-2">退款</el-menu-item>
-      </el-submenu>
-      <el-submenu index="4">
-        <template slot="title">
-          <img :src="accountImg"
-               class="menu-icon" /><span>用户管理</span>
+        <template v-else>
+          <el-menu-item :key="item.index"
+                        :index="item.index"
+                        :ref="item.index"
+                        @click="handleClickMenu(item)">
+            <img :src="item.imgSrc"
+                 class="menu-icon mgt" />
+            {{item.title}}
+          </el-menu-item>
         </template>
-        <el-menu-item index="4-1"
-                      ref="4-1">学员</el-menu-item>
-        <el-menu-item index="4-2"
-                      ref="4-2">讲师</el-menu-item>
-      </el-submenu>
-      <el-submenu index="5">
-        <template slot="title">
-          <img :src="msgImg"
-               class="menu-icon" /><span>咨询管理</span>
-        </template>
-        <el-menu-item index="5-1"
-                      ref="5-1">轮播图</el-menu-item>
-        <el-menu-item index="5-2"
-                      ref="5-2">文章</el-menu-item>
-      </el-submenu>
-      <el-submenu index="6">
-        <template slot="title">
-          <img :src="tagsImg"
-               class="menu-icon" /><span>促销管理</span>
-        </template>
-        <el-menu-item index="6-1"
-                      ref="6-1">秒杀活动</el-menu-item>
-        <el-menu-item index="6-2"
-                      ref="6-2">优惠券</el-menu-item>
-      </el-submenu>
-      <el-menu-item index="7"
-                    ref="7">
-        <img :src="settingImg"
-             class="menu-icon mgt" />系统设置
-      </el-menu-item>
+      </template>
     </el-menu>
   </div>
 </template>
@@ -78,93 +42,102 @@ import {
   Menu,
   Submenu,
   MenuItem,
-  // MenuItemGroup,
 } from "element-ui";
 export default {
   name: 'SideMenu',
   components: {
     'el-menu': Menu,
     'el-submenu': Submenu,
-    // 'el-menu-item-group': MenuItemGroup,
     'el-menu-item': MenuItem
   },
   data () {
     return {
-      homeImg: require("../../assets/images/menu-room.svg"),
-      booksImg: require("../../assets/images/menu-bookmark.svg"),
-      listImg: require("../../assets/images/menu-list.svg"),
-      accountImg: require("../../assets/images/menu-account.svg"),
-      msgImg: require("../../assets/images/menu-message.svg"),
-      tagsImg: require("../../assets/images/menu-tags.svg"),
-      settingImg: require("../../assets/images/menu-settings.svg"),
       menuList: [{
         title: '首页',
-        path: '/'
+        path: 'home',
+        index: '1',
+        imgSrc: require("../../assets/images/menu-room.svg"),
       }, {
         title: '课程管理',
-        path: '/course-list'
+        path: 'course-list',
+        index: '2',
+        imgSrc: require("../../assets/images/menu-bookmark.svg"),
       }, {
         title: '订单管理',
         path: '',
+        imgSrc: require("../../assets/images/menu-list.svg"),
+        index: '3',
         children: [{
           title: '订单',
-          path: '/'
+          path: 'order-buy',
+          index: '3-1'
         }, {
           title: '退款',
-          path: '/'
+          path: 'order-back',
+          index: '3-2'
         }]
       }, {
         title: '用户管理',
         path: '/',
+        imgSrc: require("../../assets/images/menu-account.svg"),
+        index: '4',
         children: [{
           title: '学员',
-          path: '/'
+          path: 'user-student',
+          index: '4-1'
         }, {
           title: '讲师',
-          path: '/'
+          path: 'user-teacher',
+          index: '4-2'
         }]
       }, {
         title: '资讯管理',
         path: '/',
+        imgSrc: require("../../assets/images/menu-message.svg"),
+        index: '5',
         children: [{
           title: '轮播图',
-          path: '/'
+          path: 'news-swiper',
+          index: '5-1'
         }, {
           title: '文章',
-          path: '/'
+          path: 'news-article',
+          index: '5-2'
         }]
       }, {
         title: '促销管理',
         path: '/',
+        imgSrc: require("../../assets/images/menu-tags.svg"),
+        index: '6',
         children: [{
           title: '秒杀活动',
-          path: '/'
+          path: 'sale-activity',
+          index: '6-1'
         }, {
           title: '优惠券',
-          path: '/'
+          path: 'sale-coupon',
+          index: '6-2'
         }]
       }, {
         title: '系统设置',
-        path: '/'
+        path: 'setting',
+        index: '7',
+        imgSrc: require("../../assets/images/menu-settings.svg"),
       }],
       oldPath: '/home'
     }
   },
   methods: {
-    handleOpen () {
-
-    },
-    handleClose () {
-
-    },
     handleSelect (key, keyPath) {
-      let path = this.$refs[keyPath]["$attrs"]["data-link"]
-      if (path != this.oldPath) {
-        let name = this.$refs[keyPath]["$attrs"]["data-name"]
-        this.oldPath = path
-        this.$store.store.commit('changeRoute', { path, name })
-        this.$router.push(path)
+      if (keyPath.length > 1) {
+        let parentKey = keyPath[0]
+        let childKey = keyPath[1]
       }
+      console.log(key, 'key')
+      console.log(keyPath, 'keyPath')
+    },
+    handleClickMenu (obj) {
+      this.$router.push(obj.path)
     }
   }
 }
