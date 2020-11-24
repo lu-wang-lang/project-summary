@@ -1,5 +1,6 @@
 <template>
-  <div class="course-list">
+  <div class="course-list"
+       ref="courseList">
     <div class="search-div">
       <div class="title">课程筛选</div>
       <div class="search-container">
@@ -38,14 +39,51 @@
         </el-form>
       </div>
     </div>
-    <div class="table-div">
+    <div class="table-div"
+         ref="tableDiv">
       <div class="list-top">
         <div class="title">课程列表</div>
         <el-button type="primary"
                    @click="handleAdd">添加课程</el-button>
       </div>
       <div class="list-container">
-
+        <el-table :data="tableData"
+                  style="width: 100%">
+          <el-table-column prop="courseNumber"
+                           label="编号"
+                           width="80">
+          </el-table-column>
+          <el-table-column prop="courseName"
+                           label="名称"
+                           width="180">
+          </el-table-column>
+          <el-table-column prop="imgSrc"
+                           label="封面"
+                           width="180">
+          </el-table-column>
+          <el-table-column prop="status"
+                           label="状态"
+                           width="100">
+          </el-table-column>
+          <el-table-column prop="price"
+                           label="价格"
+                           width="100">
+          </el-table-column>
+          <el-table-column prop="saleCount"
+                           label="销量"
+                           width="100">
+          </el-table-column>
+          <el-table-column prop="uploadAccount"
+                           label="上传人"
+                           width="100">
+          </el-table-column>
+          <el-table-column prop="uploadTime"
+                           label="上传时间"
+                           width="180">
+          </el-table-column>
+          <el-table-column label="操作">
+          </el-table-column>
+        </el-table>
       </div>
     </div>
   </div>
@@ -60,6 +98,8 @@ import {
   Input,
   Button,
   DatePicker,
+  Table,
+  TableColumn,
 } from 'element-ui'
 export default {
   name: 'CourseList',
@@ -71,6 +111,8 @@ export default {
     'el-input': Input,
     'el-button': Button,
     'el-date-picker': DatePicker,
+    'el-table': Table,
+    'el-table-column': TableColumn,
   },
   data () {
     return {
@@ -86,7 +128,116 @@ export default {
         value: '0',
         label: '下架'
       }],
-      searchImg: require("../assets/images/filter.svg")
+      searchImg: require("../assets/images/filter.svg"),
+      tableData: [{
+        courseNumber: '0035432',
+        courseName: '墨刀原型竞品课程',
+        imgSrc: require('../assets/images/img/course.png'),
+        status: '1',
+        price: '88.00',
+        saleCount: 888,
+        uploadAccount: '王小塔',
+        uploadTime: '2020.11.24 15:18'
+      }, {
+        courseNumber: '0035432',
+        courseName: '墨刀原型竞品课程',
+        imgSrc: require('../assets/images/img/course.png'),
+        status: '0',
+        price: '88.00',
+        saleCount: 888,
+        uploadAccount: '王小塔',
+        uploadTime: '2020.11.24 15:18'
+      }, {
+        courseNumber: '0035432',
+        courseName: '墨刀原型竞品课程',
+        imgSrc: require('../assets/images/img/course.png'),
+        status: '0',
+        price: '88.00',
+        saleCount: 888,
+        uploadAccount: '王小塔',
+        uploadTime: '2020.11.24 15:18'
+      }, {
+        courseNumber: '0035432',
+        courseName: '墨刀原型竞品课程',
+        imgSrc: require('../assets/images/img/course.png'),
+        status: '0',
+        price: '88.00',
+        saleCount: 888,
+        uploadAccount: '王小塔',
+        uploadTime: '2020.11.24 15:18'
+      }, {
+        courseNumber: '0035432',
+        courseName: '墨刀原型竞品课程',
+        imgSrc: require('../assets/images/img/course.png'),
+        status: '0',
+        price: '88.00',
+        saleCount: 888,
+        uploadAccount: '王小塔',
+        uploadTime: '2020.11.24 15:18'
+      }, {
+        courseNumber: '0035432',
+        courseName: '墨刀原型竞品课程',
+        imgSrc: require('../assets/images/img/course.png'),
+        status: '0',
+        price: '88.00',
+        saleCount: 888,
+        uploadAccount: '王小塔',
+        uploadTime: '2020.11.24 15:18'
+      }, {
+        courseNumber: '0035432',
+        courseName: '墨刀原型竞品课程',
+        imgSrc: require('../assets/images/img/course.png'),
+        status: '0',
+        price: '88.00',
+        saleCount: 888,
+        uploadAccount: '王小塔',
+        uploadTime: '2020.11.24 15:18'
+      }, {
+        courseNumber: '0035432',
+        courseName: '墨刀原型竞品课程',
+        imgSrc: require('../assets/images/img/course.png'),
+        status: '0',
+        price: '88.00',
+        saleCount: 888,
+        uploadAccount: '王小塔',
+        uploadTime: '2020.11.24 15:18'
+      }, {
+        courseNumber: '0035432',
+        courseName: '墨刀原型竞品课程',
+        imgSrc: require('../assets/images/img/course.png'),
+        status: '0',
+        price: '88.00',
+        saleCount: 888,
+        uploadAccount: '王小塔',
+        uploadTime: '2020.11.24 15:18'
+      }, {
+        courseNumber: '0035432',
+        courseName: '墨刀原型竞品课程',
+        imgSrc: require('../assets/images/img/course.png'),
+        status: '0',
+        price: '88.00',
+        saleCount: 888,
+        uploadAccount: '王小塔',
+        uploadTime: '2020.11.24 15:18'
+      }, {
+        courseNumber: '0035432',
+        courseName: '墨刀原型竞品课程',
+        imgSrc: require('../assets/images/img/course.png'),
+        status: '0',
+        price: '88.00',
+        saleCount: 888,
+        uploadAccount: '王小塔',
+        uploadTime: '2020.11.24 15:18'
+      }, {
+        courseNumber: '0035432',
+        courseName: '墨刀原型竞品课程',
+        imgSrc: require('../assets/images/img/course.png'),
+        status: '0',
+        price: '88.00',
+        saleCount: 888,
+        uploadAccount: '王小塔',
+        uploadTime: '2020.11.24 15:18'
+      }],
     }
   },
   methods: {
@@ -96,6 +247,10 @@ export default {
     handleAdd () {
 
     }
+  },
+  mounted () {
+    let height = this.$refs.courseList.offsetHeight - 178  //- 20-20-144
+    this.$refs.tableDiv.style.height = height + 'px'
   }
 }
 </script>
@@ -103,6 +258,7 @@ export default {
 <style lang="less">
 .course-list {
   width: 100%;
+  height: calc(100% - 45px);
   display: flex;
   flex-direction: column;
 
@@ -117,10 +273,11 @@ export default {
     padding: 20px;
   }
   .table-div {
-    height: 1009px;
+    // height: 1009px;
     padding: 0px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
   .title {
     width: 50%;
@@ -153,8 +310,8 @@ export default {
     flex: 1;
     width: 100%;
     box-sizing: border-box;
-    padding: 0px 20px;
-    background: red;
+    padding: 20px;
+    padding-top: 0px;
   }
 }
 </style>
