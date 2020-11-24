@@ -209,4 +209,9 @@ body {
   border-radius: 5px;
   background: rgba(144, 147, 153, 0.7);
 }
+
+.el-button--primary {
+  background-color: #38a28a;
+  border-color: #38a28a;
+}
 </style>

@@ -10,12 +10,12 @@ const router = new Router({
   mode: 'history'
 })
 
-router.beforeEach((to, from, next) => {
-  // if (to.path === from.path) {
-  //   next(false)
-  // } else {
-  //   next()
-  // }
-})
+// router.beforeEach((to, from, next) => {
+//   // if (to.path === from.path) {
+//   //   next(false)
+//   // } else {
+//   //   next()
+//   // }
+// })
 
 export default router
