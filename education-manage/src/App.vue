@@ -210,8 +210,19 @@ body {
   background: rgba(144, 147, 153, 0.7);
 }
 
-.el-button--primary {
+.el-button--primary,
+.el-button--primary:focus,
+.el-button--primary:hover {
   background-color: #38a28a;
   border-color: #38a28a;
 }
+// .el-checkbox__input.is-checked .el-checkbox__inner,
+// .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+//   background-color: #38a28a;
+//   border-color: #38a28a;
+// }
+// .el-button:focus,
+// .el-button:hover {
+//   color: #38a28a;
+// }
 </style>
