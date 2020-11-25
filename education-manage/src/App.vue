@@ -38,6 +38,9 @@
           <!-- <el-breadcrumb-item>活动详情</el-breadcrumb-item> -->
         </el-breadcrumb>
         <router-view />
+        <!-- <el-backtop target=".app-container"
+                    :visibility-height="10"
+                    :bottom="100"></el-backtop> -->
       </div>
     </div>
   </div>
@@ -51,6 +54,7 @@ import {
   Badge,
   Breadcrumb,
   BreadcrumbItem,
+  Backtop,
 } from "element-ui";
 import SideMenu from '@/components/Home/sideMenu'
 export default {
@@ -62,7 +66,8 @@ export default {
     'el-dropdown-item': DropdownItem,
     'el-badge': Badge,
     'el-breadcrumb': Breadcrumb,
-    'el-breadcrumb-item': BreadcrumbItem
+    'el-breadcrumb-item': BreadcrumbItem,
+    'el-backtop': Backtop,
   },
   data () {
     return {

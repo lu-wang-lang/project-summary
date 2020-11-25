@@ -12,6 +12,10 @@ let routeArray = [
     name: 'course-list',
     component: resolve => require(["../pages/courseList.vue"], resolve)
   }, {
+    path: '/course-add',
+    name: 'course-add',
+    component: resolve => require(["../components/course/addCourse.vue"], resolve)
+  }, {
     path: '/order-buy',
     name: 'order-buy',
     component: resolve => require(["../pages/order/orderBuyList.vue"], resolve)
