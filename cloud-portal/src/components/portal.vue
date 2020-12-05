@@ -248,6 +248,10 @@ export default {
         border: 1px solid @border-color;
         border-left: none;
       }
+      .search-input::selection{
+        background: #0E6BDA;
+        color:white;
+      }
       .search-input:focus{
         border: 1px solid @border-color;
         border-left: none;
