@@ -6,7 +6,55 @@
         <p>我的职业课堂</p>
       </div>
       <div class="header-search">
-        <div class="search-container"></div>
+        <el-select class="search-type" v-model="searchData.type" @change="changeSearchType">
+          <el-option 
+            v-for="(option,index) of searchTypeList" 
+            :key="index"
+            :label="option.name" 
+            :value="option.type" 
+          ></el-option>
+        </el-select>
+        <input
+          class="search-input"
+          :placeholder="searchTypeList[selectedIndex].placeholder" 
+          v-model="searchData.content"
+          @keydown.enter="handleSearch"
+          @focus="focusSearchInput"
+        />
+        <div class="search-icon" @click="handleSearch">
+          <img :src="searchImg"/>
+          <span>搜索</span>
+        </div>
+        <div class="search-tips" ref="searchTips">
+          <ul class="top-ul">
+            <li class="top-li" v-if="historyTips.length>0">
+              <div class="top-title">
+                历史搜索
+                <div class="clear-history" @click="clearHistory">
+                  <i class="el-icon-delete"></i>
+                  清空
+                </div>
+              </div>
+              <ul class="sub-ul">
+                <li class="sub-li"
+                    v-for="(tip,idx) of historyTips"
+                    :key="idx"
+                    @click="clickSearchTip(tip.content)">{{tip.content}}</li>
+              </ul>
+            </li>
+            <li class="top-li">
+              <div class="top-title">
+                热门搜索
+              </div>
+              <ul class="sub-ul">
+                <li class="sub-li"
+                    v-for="(tip,idx) of searchTypeList[selectedIndex].searchTips"
+                    :key="idx"
+                    @click="clickSearchTip(tip.content)">{{tip.content}}</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="header-parts">
         <span style="cursor: pointer;">我的学习</span>
@@ -27,12 +75,102 @@
 </template>
 
 <script>
+import {
+  Select, 
+  Option,
+  OptionGroup,
+} from 'element-ui'
 export default {
   name: 'Portal',
+  components:{
+    'el-select':Select,
+    'el-option':Option,
+    'el-option-group':OptionGroup,
+  },
   data () {
     return {
-      avatarImg:require('../assets/images/avatar.png')
+      avatarImg:require('../assets/images/avatar.png'),
+      searchImg:require('../assets/images/mb-search.svg'),
+      searchTypeList:[{
+        type:'course',
+        name:'课程',
+        placeholder:'Python零基础入门',
+        searchTips:[{
+          id:1,
+          content:'Python零基础入门'
+        },{
+          id:2,
+          content:'金融量化'
+        },{
+          id:3,
+          content:'思维导图速学指南'
+        },{
+          id:4,
+          content:'股票量化'
+        }]
+      },{
+        type:'school',
+        name:'网校',
+        placeholder:'搜索网校',
+        searchTips:[{
+          id:1,
+          content:'达内'
+        },{
+          id:2,
+          content:'骇客'
+        },{
+          id:3,
+          content:'软件'
+        },{
+          id:4,
+          content:'网校'
+        },{
+          id:5,
+          content:'考研'
+        }]
+      }],
+      searchData:{
+        type:'course',
+        content:''
+      },
+      selectedIndex:0,
+      historyTips:[],
     }
+  },
+  methods:{
+    //搜索类型切换事件  --searchType
+    changeSearchType(val){
+      this.selectedIndex = this.searchTypeList.findIndex(c=>c.type===val) > -1
+        ?this.searchTypeList.findIndex(c=>c.type===val):0
+      this.focusSearchInput()
+    },
+    //点击搜索中的tip内容 --需要对搜索类型也进行判断处理
+    clickSearchTip(content){
+      let idx = this.historyTips.findIndex(c=>c.content===content)
+      if(idx===-1){
+        this.historyTips.unshift({ content })
+        if(this.historyTips.length>2){
+          this.historyTips.pop()
+        }
+      }
+      window.open(`https://study.163.com/provider-search?keyword=${content}`)
+    },
+    //清空搜索历史
+    clearHistory(){
+      this.historyTips = []
+    },
+    //搜索
+    handleSearch(){
+      if(this.searchData.content){
+        this.clickSearchTip(this.searchData.content)
+      }
+    },
+    focusSearchInput(){
+      this.$refs['searchTips'].style.display="block"
+    },
+    // blurSearchInput(){
+    //   this.$refs['searchTips'].style.display="none"
+    // },
   }
 }
 </script>
@@ -73,16 +211,117 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .header-search{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .search-container{
-        width: 397px;
+      position: relative;
+      .search-type{
+        width: 70px;
+        box-sizing: border-box;
+        .el-input__suffix{
+          right:3px;
+        }
+        .el-input__suffix-inner{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .el-input__inner{
+          height: 38px;
+          text-align: right;
+          padding: 8px 20px 7px 7px;
+          border: 1px solid @border-color;
+          border-right: none;
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 0px;
+          color:@normal-color;
+        }
+        .el-input__icon{
+          width: 14px;
+        }
+      }
+      .search-input{
+        width: 240px;
         height: 36px;
-        border: 1px solid #4BAF50;
-        border-radius: 20px;
+        padding: 0px 5px;
+        color:@normal-color;
+        font-size: @normal-font-size;
+        border: 1px solid @border-color;
+        border-left: none;
+      }
+      .search-input:focus{
+        border: 1px solid @border-color;
+        border-left: none;
+        outline: none;
+      }
+      .search-icon{
+        width: 80px;
+        height: 36px;
+        display: flex;
+        border: 1px solid @theme-color;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background: @theme-color;
+        color:white;
+        align-items: center;
+        font-size: @normal-font-size;
+        cursor: pointer;
+        img{
+          width: 18px;
+          margin-right: 2px;
+          margin-left: 10px;
+        }
+      }
+      .search-icon:hover{
+        opacity: 0.9;
+      }
+      .search-tips{
+        width: 300px;
+        position: absolute;
+        background: white;
+        top: 76px;
+        left: 222px;
+        z-index: 999;
+        box-shadow: 0 2px 8px 0 rgba(0,0,0,0.15);
+        border-radius: 2px;
+        padding-bottom:10px;
+        display: none;
+        .top-ul{
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          .top-li{
+            .top-title{
+              display: flex;
+              justify-content: space-between;
+              align-items:center ;
+              height:50px;
+              font-size: 12px;
+              color:#999;
+              padding: 0px 16px;
+              .clear-history{
+                cursor: pointer;
+              }
+            }
+            .sub-ul{
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              .sub-li{
+                height: 50px;
+                padding: 0px 0px 0px 16px;
+                color:@normal-color;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;    
+              }
+              .sub-li:hover{
+                color:@theme-color;
+                background: @light-gray-color;
+              }
+            }
+          }
+        }
       }
     }
     .header-parts{
@@ -91,7 +330,7 @@ export default {
       display: flex;
       align-items: center;
       font-size: @normal-font-size;
-      color:#5B5B5B;
+      color:@normal-color;
       .icon{
         font-size: 20px;
         margin-left: 16px;
@@ -99,14 +338,14 @@ export default {
       }
       .user-container{
         margin-left: 16px;
-        border-left: 1px solid #bbbbbe;
+        border-left: 1px solid @border-color;
         display: flex;
         align-items: center;
         cursor: pointer;
         .img-container{
           width: 30px;
           height:30px;
-          border: 1px solid #bbbbbe;
+          border: 1px solid @border-color;
           border-radius: 50%;
           margin: 0px 10px;
           padding: 2px;
@@ -118,6 +357,16 @@ export default {
       }
     }
   }
+  .banner{
+    width: @contentWidth;
+    height: 112px;
+    box-sizing: border-box;
+    background: red;
+  }
   .footer{}
+}
+
+.el-select-dropdown__item.selected{
+  color:@theme-color;
 }
 </style>

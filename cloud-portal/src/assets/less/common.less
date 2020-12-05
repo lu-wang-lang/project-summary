@@ -1,17 +1,33 @@
-body,p{
+body,p,ul,li{
   margin: 0px;
   padding: 0px;
+}
+
+*::selection{
+  background: transparent;
+}
+
+li{
+  list-style: none;
 }
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #46484b;
+  // color: #46484b;
+  color:@normal-color;
 }
 
-@contentWidth:1205px;
+@contentWidth:1205px;   //主要内容的外框宽度
 
 @small-font-size:12px;
 @normal-font-size:14px;
 @big-font-size:16px;
+
+@normal-color:#5B5B5B;  //一般文字的颜色 
+@theme-color:#4BAF50;   //系统的主题颜色
+@border-color:#bbb;     //一般边框的颜色
+
+@light-gray-color:#F4F4F4;
+
