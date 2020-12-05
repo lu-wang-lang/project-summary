@@ -1,5 +1,5 @@
 <template>
-  <div class="portal">
+  <div class="portal" @click="handlePortalClick">
     <div class="header">
       <div class="header-logo">
         <p>网易云课堂</p>
@@ -19,7 +19,7 @@
           :placeholder="searchTypeList[selectedIndex].placeholder" 
           v-model="searchData.content"
           @keydown.enter="handleSearch"
-          @focus="focusSearchInput"
+          @click.stop="focusSearchInput"
         />
         <div class="search-icon" @click="handleSearch">
           <img :src="searchImg"/>
@@ -153,7 +153,7 @@ export default {
           this.historyTips.pop()
         }
       }
-      window.open(`https://study.163.com/provider-search?keyword=${content}`)
+      window.location.href=`https://study.163.com/provider-search?keyword=${content}`
     },
     //清空搜索历史
     clearHistory(){
@@ -168,9 +168,9 @@ export default {
     focusSearchInput(){
       this.$refs['searchTips'].style.display="block"
     },
-    // blurSearchInput(){
-    //   this.$refs['searchTips'].style.display="none"
-    // },
+    handlePortalClick(){
+      this.$refs['searchTips'].style.display="none"
+    },
   }
 }
 </script>
