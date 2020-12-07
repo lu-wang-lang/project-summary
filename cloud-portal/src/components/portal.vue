@@ -2,8 +2,8 @@
   <div class="portal" @click="handlePortalClick">
     <div class="header">
       <div class="header-logo">
-        <p>网易云课堂</p>
-        <p>我的职业课堂</p>
+        <span>网易云课堂</span>
+        <span>我的职业课堂</span>
       </div>
       <div class="header-search">
         <el-select class="search-type" v-model="searchData.type" @change="changeSearchType">
@@ -72,12 +72,13 @@
         </div>
       </div>
     </div>
-    <div class="banner"></div>
-    <div class="container"></div>
+    <div class="main-container" :style="'min-height:'+minHeight">
+      <div class="banner"></div>
+    </div>
     <div class="footer">
       <div class="container">
         <div class="footer-left">
-          <p class="desc-top">网易云课堂 是网易公司（163.com）旗下专注职业技能提升的在线学习平台。</p>
+          <div class="desc-top">网易云课堂 是网易公司（163.com）旗下专注职业技能提升的在线学习平台。</div>
           <div class="alink">
             <a 
               v-for="(alink,index) of alinks" 
@@ -94,15 +95,15 @@
             <div class="download-item">
               <img :src="appleImg"/>
               <div class="download-content">
-                <p>App Store</p>
-                <p>下载</p>
+                <span>App Store</span>
+                <span>下载</span>
               </div>
             </div>
             <div class="download-item">
               <img :src="androidImg"/>
               <div class="download-content">
-                <p>Android</p>
-                <p>下载</p>
+                <span>Android</span>
+                <span>下载</span>
               </div>
             </div>
           </div>
@@ -138,6 +139,7 @@ export default {
   },
   data () {
     return {
+      minHeight:'0px',
       avatarImg:require('../assets/images/avatar.png'),
       searchImg:require('../assets/images/mb-search.svg'),
       appleImg:require('../assets/images/apple.svg'),
@@ -246,6 +248,10 @@ export default {
     handlePortalClick(){
       this.$refs['searchTips'].style.display="none"
     },
+  },
+  mounted(){
+    let height = (document.body.clientHeight||document.documentElement.clientHeight)-112-184
+    this.minHeight = height+'px'
   }
 }
 </script>
@@ -270,11 +276,11 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      p:first-child{
+      span:first-child{
         font-size: 28px;
         letter-spacing: 0.5px;
       }
-      p:last-child{
+      span:last-child{
         font-size: @normal-font-size;
         color:#A6A4A4;
         letter-spacing: 2px;
@@ -364,6 +370,8 @@ export default {
         border-radius: 2px;
         padding-bottom:10px;
         display: none;
+        max-height: 300px;
+        overflow-y: auto;
         .top-ul{
           width: 100%;
           display: flex;
