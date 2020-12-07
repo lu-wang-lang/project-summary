@@ -365,7 +365,6 @@ export default {
     width: @contentWidth;
     height: 112px;
     box-sizing: border-box;
-    background: red;
   }
   .footer{}
 }
