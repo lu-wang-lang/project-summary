@@ -57,9 +57,13 @@
         </div>
       </div>
       <div class="header-parts">
-        <span style="cursor: pointer;">我的学习</span>
-        <i class="icon el-icon-bell" ></i>
-        <i class="icon el-icon-shopping-cart-2"></i>
+        <span class="learn">我的学习</span>
+        <el-badge :value="2" :max="10" class="badge-item">
+          <i class="icon el-icon-bell" ></i>
+        </el-badge>
+        <el-badge :value="10" :max="10" class="badge-item">
+          <i class="icon el-icon-shopping-cart-2"></i>
+        </el-badge>
         <div class="user-container">
           <div class="img-container">
             <img :src="avatarImg"/>
@@ -79,6 +83,7 @@ import {
   Select, 
   Option,
   OptionGroup,
+  Badge,
 } from 'element-ui'
 export default {
   name: 'Portal',
@@ -86,6 +91,7 @@ export default {
     'el-select':Select,
     'el-option':Option,
     'el-option-group':OptionGroup,
+    'el-badge':Badge,
   },
   data () {
     return {
@@ -335,13 +341,18 @@ export default {
       align-items: center;
       font-size: @normal-font-size;
       color:@normal-color;
-      .icon{
-        font-size: 20px;
-        margin-left: 16px;
+      .learn{
         cursor: pointer;
       }
+      .badge-item{
+        margin-left: 15px;
+        .icon{
+          font-size: 20px;
+          cursor: pointer;
+        }
+      }
       .user-container{
-        margin-left: 16px;
+        margin-left: 25px;
         border-left: 1px solid @border-color;
         display: flex;
         align-items: center;
@@ -358,6 +369,12 @@ export default {
             width: 100%;
           }
         }
+      }
+      .learn:hover,
+      .badge-item:hover,
+      .user-container:hover{
+        color:@theme-color;
+        transition: 0.2s all;
       }
     }
   }
