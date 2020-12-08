@@ -73,7 +73,16 @@
       </div>
     </div>
     <div class="main-container" :style="'min-height:'+minHeight">
-      <div class="banner"></div>
+      <swiper :options="swiperOption" class="swiper-container">
+          <swiper-slide 
+            class="swiper-slide" 
+            v-for="(swiper,index) in swiperList" 
+            :key="index" 
+            :style="'background:'+swiper.background"
+          >
+            <img :src="swiper.imgSrc"/>
+          </swiper-slide>
+      </swiper>
     </div>
     <div class="footer">
       <div class="container">
@@ -129,6 +138,7 @@ import {
   OptionGroup,
   Badge,
 } from 'element-ui'
+import Swiper from 'swiper';
 export default {
   name: 'Portal',
   components:{
@@ -190,6 +200,38 @@ export default {
       },
       selectedIndex:0,
       historyTips:[],
+      swiperOption:{
+        //自动轮播
+        autoplay: {
+          delay: 2000,
+          //当用户滑动图片后继续自动轮播
+          disableOnInteraction: true,
+        },
+        //开启循环模式
+        loop: true,
+        effect : 'fade',
+      },
+      swiperList:[{
+        imgSrc:require('../assets/images/banner/1.png'),
+        title:'',
+        id:1,
+        background:'#272D16'
+      },{
+        imgSrc:require('../assets/images/banner/2.png'),
+        title:'',
+        id:2,
+        background:'#FF3A24'
+      },{
+        imgSrc:require('../assets/images/banner/3.jpg'),
+        title:'',
+        id:3,
+        background:'#1A8FA6'
+      },{
+        imgSrc:require('../assets/images/banner/4.jpg'),
+        title:'',
+        id:4,
+        background:'#2C64FF'
+      }],
       alinks:[{
         title:'关于我们',
         href:'//study.163.com/about/aboutus.htm#/about?aboutType=1'
@@ -267,7 +309,6 @@ export default {
   .header{
     width: @contentWidth;
     height: 112px;
-    box-sizing: border-box;
     display: flex;
     align-items: center;
     .header-logo{
@@ -295,7 +336,6 @@ export default {
       position: relative;
       .search-type{
         width: 70px;
-        box-sizing: border-box;
         .el-input__suffix{
           right:3px;
         }
@@ -305,7 +345,7 @@ export default {
           align-items: center;
         }
         .el-input__inner{
-          height: 38px;
+          height: 36px;
           text-align: right;
           padding: 8px 20px 7px 7px;
           border: 1px solid @border-color;
@@ -439,7 +479,6 @@ export default {
           border-radius: 50%;
           margin: 0px 10px;
           padding: 2px;
-          box-sizing:border-box ;
           img{
             width: 100%;
           }
@@ -453,15 +492,25 @@ export default {
       }
     }
   }
-  .banner{
-    width: @contentWidth;
-    height: 112px;
-    box-sizing: border-box;
+  .main-container{
+    width: 100%;
+    .swiper-container {
+      width: 100%;
+      height: 360px;
+      .swiper-slide{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .swiper-img{
+          width: @contentWidth;
+          height: 100%;
+        }
+      }
+    }
   }
   .footer{
     width: 100%;
     height: 184px;
-    box-sizing: border-box;
     background: #474443;
     .container{
       width: @contentWidth;
@@ -509,6 +558,7 @@ export default {
             padding: 3px;
             display: flex;
             align-items: center;
+            cursor: pointer;
             img{
               width: 24px;  
               height: 24px;
@@ -536,6 +586,7 @@ export default {
             justify-content:center;
             align-items: center;
             margin-left: 5px;
+            cursor: pointer;
             img{
               width: 70%;
             }
