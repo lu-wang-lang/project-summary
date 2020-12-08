@@ -370,8 +370,6 @@ export default {
         border-radius: 2px;
         padding-bottom:10px;
         display: none;
-        max-height: 300px;
-        overflow-y: auto;
         .top-ul{
           width: 100%;
           display: flex;
