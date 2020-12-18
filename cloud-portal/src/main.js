@@ -7,8 +7,10 @@ import { Message, Loading, MessageBox } from "element-ui"
 import 'element-ui/lib/theme-chalk/index.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
+import Directives from './directives'
 
 Vue.use(VueAwesomeSwiper)
+Vue.use(Directives)
 
 Vue.config.productionTip = false
 Vue.prototype.$message = Message;

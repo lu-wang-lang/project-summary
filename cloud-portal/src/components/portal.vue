@@ -73,16 +73,15 @@
       </div>
     </div>
     <div class="main-container" :style="'min-height:'+minHeight">
-      <swiper :options="swiperOption" class="swiper-container">
-          <swiper-slide 
-            class="swiper-slide" 
-            v-for="(swiper,index) in swiperList" 
-            :key="index" 
-            :style="'background:'+swiper.background"
-          >
-            <img :src="swiper.imgSrc"/>
-          </swiper-slide>
-      </swiper>
+      <transition name="fade">
+        <div
+          class="swiper-container" 
+          :style="'background:'+swiper.background"
+        >
+          <div></div>
+          <img :src="swiper.imgSrc" class="swiper-img"/>
+        </div>
+      </transition>
     </div>
     <div class="footer">
       <div class="container">
@@ -138,7 +137,8 @@ import {
   OptionGroup,
   Badge,
 } from 'element-ui'
-import Swiper from 'swiper';
+// import Swiper from 'swiper';
+// import swiperAnimate from '../utils/swiper-animate'
 export default {
   name: 'Portal',
   components:{
@@ -200,17 +200,9 @@ export default {
       },
       selectedIndex:0,
       historyTips:[],
-      swiperOption:{
-        //自动轮播
-        autoplay: {
-          delay: 2000,
-          //当用户滑动图片后继续自动轮播
-          disableOnInteraction: true,
-        },
-        //开启循环模式
-        loop: true,
-        effect : 'fade',
-      },
+      selectSwiperIndex:0,
+      swiperTimer:null,
+      swiper:[],
       swiperList:[{
         imgSrc:require('../assets/images/banner/1.png'),
         title:'',
@@ -294,11 +286,28 @@ export default {
   mounted(){
     let height = (document.body.clientHeight||document.documentElement.clientHeight)-112-184
     this.minHeight = height+'px'
+
+    this.swiper = this.swiperList[this.selectSwiperIndex]
+    if(this.selectSwiperIndex <  this.swiperList.length - 1){
+      this.selectSwiperIndex++
+    }else{
+      this.selectSwiperIndex = 0
+    }
+    let _this = this
+    this.swiperTimer = setInterval(() => {
+      _this.swiper = _this.swiperList[_this.selectSwiperIndex]
+      if(_this.selectSwiperIndex <  _this.swiperList.length - 1){
+        _this.selectSwiperIndex++
+      }else{
+        _this.selectSwiperIndex = 0
+      }
+    },3000)
   }
 }
 </script>
 
 <style lang="less">
+@import url('../assets/less/animate.min.css');
 @import '../assets/less/common.less';
 .portal{
   width: 100%;
@@ -497,14 +506,19 @@ export default {
     .swiper-container {
       width: 100%;
       height: 360px;
-      .swiper-slide{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .swiper-img{
-          width: @contentWidth;
-          height: 100%;
-        }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      .swiper-img{
+        width: @contentWidth;
+        height: 100%;
+      }
+      .fade-enter-active {
+        animation: bounce-in .5s;
+      }
+      .fade-leave-active { 
+        animation: bounce-in .5s reverse;
       }
     }
   }
