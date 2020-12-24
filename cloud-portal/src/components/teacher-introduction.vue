@@ -36,7 +36,7 @@
 
 <script>
 import {
-  Tree 
+  Tree
 } from 'element-ui'
 export default {
   name:'TeacherInduction',
