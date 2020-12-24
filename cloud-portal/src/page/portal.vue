@@ -4,6 +4,7 @@
     <portal-banner></portal-banner>
     <div class="main-container" :style="'min-height:' + minHeight">
       <teacher-famous></teacher-famous>
+      <course-live></course-live>
     </div>
     <portal-footer></portal-footer>
   </div>
@@ -13,6 +14,7 @@
 import PortalHeader from "../components/portal/header";
 import PortalBanner from "../components/portal/banner";
 import TeacherFamous from "../components/portal/main-famous-teacher";
+import CourseLive from "../components/portal/main-course-live";
 import PortalFooter from "../components/portal/footer";
 export default {
   name: "Portal",
@@ -20,6 +22,7 @@ export default {
     PortalHeader,
     PortalBanner,
     TeacherFamous,
+    CourseLive,
     PortalFooter,
   },
   data() {
