@@ -135,6 +135,7 @@ export default {
         .title{
           font-size: @big-font-size;
           margin-bottom: 8px;
+          line-height: 24px;
         }
         .name{
           font-size: @small-font-size;
