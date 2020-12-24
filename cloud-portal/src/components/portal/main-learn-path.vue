@@ -1,22 +1,25 @@
 <template>
-  <div class="famous-teacher-container">
+  <div class="course-live-container">
     <div class="module-title">
-      <div class="title">名师公开课</div>
-      <div class="more" @click="getMore('teacher')">
+      <div class="title">课堂直播</div>
+      <div class="more" @click="getMore('courseLive')">
         更多 <img :src="moreImg" class="img-more" />
       </div>
     </div>
-    <div class="teacher-container">
+    <div class="course-live">
       <div class="teacher-item" v-for="(teacher, index) of list" :key="index">
         <div class="teacher-img">
           <img :src="teacher.teacherImg" />
         </div>
         <div class="right-container">
-          <div class="time">{{ teacher.time }}</div>
+          <div class="time">
+            <span>{{ teacher.time }}</span>
+            <span class="line">|</span>
+            <span class="open">开启提醒</span>
+          </div>
           <div class="title">{{ teacher.title }}</div>
           <div class="name">
             {{ teacher.teacher }}
-            <span class="position">{{ teacher.position }}</span>
           </div>
           <div class="desc" v-html="teacher.desc"></div>
         </div>
@@ -27,37 +30,49 @@
 
 <script>
 export default {
-  name: "TeacherFamous",
+  name: "CourseLive",
   data() {
     return {
       moreImg: require("../../assets/images/right-circle.svg"),
       list: [
         {
           id: 1,
-          time: "12月28日 20:00",
-          title: "3天播音配音训练营",
-          teacher: "奶昔",
-          position: "配音女神",
-          desc: "浙江传媒学院影视配音专业，配音女神",
-          teacherImg: require("../../assets/images/teacher/1.png"),
+          time: "今天 20:00",
+          title: "加快项目进度-大型vue项目api层架构解析",
+          teacher: "唐磊 网易前端高级讲师",
+          teacherImg: require("../../assets/images/course-live/1.jpg"),
         },
         {
           id: 2,
-          time: "明天 20:00",
-          title: "5小时get高能英语技巧",
-          teacher: "爱丽丝",
-          position: "王室口音",
-          desc: "爱尔兰都柏林大学&nbsp&nbsp&nbsp讲师",
-          teacherImg: require("../../assets/images/teacher/2.png"),
+          time: "今天 20:00",
+          title: "安全工程师成长之路",
+          teacher: "苏斌 网易资深安全工程师",
+          teacherImg: require("../../assets/images/course-live/2.png"),
         },
         {
           id: 3,
-          time: "12月28日 20:00",
-          title: "1个公式，轻松学会基金股票投资",
-          teacher: "有钱君",
-          position: "网易理财学堂创始人",
-          desc: "月薪5000也能弯道超车",
-          teacherImg: require("../../assets/images/teacher/3.png"),
+          time: "今天 20:00",
+          title: "【摄影干货】：拍好新年的第一缕阳光",
+          teacher: "咔图 云课堂首席摄影讲师",
+          teacherImg: require("../../assets/images/course-live/3.png"),
+        }, {
+          id: 4,
+          time: "今天 20:00",
+          title: "入行必听：UI设计师5大避坑问题",
+          teacher: "aiki 网易特邀设计师",
+          teacherImg: require("../../assets/images/course-live/4.jpg"),
+        }, {
+          id: 5,
+          time: "今天 20:00",
+          title: "用Python做股票指标分析和买卖时机选择",
+          teacher: "网易特邀数据科学专家",
+          teacherImg: require("../../assets/images/course-live/5.jpg"),
+        }, {
+          id: 6,
+          time: "今天 20:00",
+          title: "一节课教你用Excel搞定年终总结！",
+          teacher: "王佩丰 微软全球最有价值专家（MVP)",
+          teacherImg: require("../../assets/images/course-live/6.jpg"),
         },
       ],
     };

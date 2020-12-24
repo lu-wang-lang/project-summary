@@ -86,17 +86,18 @@ export default {
 <style lang="less">
 @import url("../../assets/less/animate.min.css");
 @import "../../assets/less/common.less";
-.famous-teacher-container {
+.course-live-container {
   width: 100%;
   padding-bottom:10px;
-  .teacher-container {
+  margin-top:-10px;
+  .course-live {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     .teacher-item {
       width: calc((100% - 20px) / 3);
-      height: 145px;
-      border: 1px solid rgba(153, 153, 153, 0.15);
+      height: 125px;
       border-radius: @card-border-radius;
       display: flex;
       padding: 15px;
@@ -107,7 +108,7 @@ export default {
         margin-right: 20px;
         img {
           width: 100%;
-          border-radius: @card-border-radius;
+          border-radius: 50%;
         }
       }
       .right-container{
@@ -119,30 +120,23 @@ export default {
         color:#333;
         .time{
           margin-bottom: 8px;
+          display: flex;
+          align-items: center;
+          .line{
+            margin-left: 10px;
+            color:#ccc;
+          }
+          .open{
+            color:@theme-color;
+            margin-left: 10px;
+            cursor: pointer;
+          }
         }
         .title{
           font-size: @big-font-size;
           margin-bottom: 8px;
         }
         .name{
-          display: flex;
-          align-items: center;
-          margin-bottom: 8px;
-          .position{
-            height: 22px;
-            padding: 0px 4px;
-            line-height: 20px;
-            display: inline-block;
-            font-size: @small-font-size;
-            font-weight: bold;
-            color:#f4ad0b;
-            background: rgba(244, 173, 11, 0.06);
-            border:1px solid rgba(244, 173, 11, 0.4);
-            border-radius: 4px;
-            margin-left: 20px;
-          }
-        }
-        .desc{
           font-size: @small-font-size;
           color:#666;
         }
