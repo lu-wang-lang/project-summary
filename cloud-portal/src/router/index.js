@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Portal from '@/components/portal'
+import Portal from '@/page/portal'
 import teacherIntroduction from '@/components/teacher-introduction'
 
 Vue.use(Router)
