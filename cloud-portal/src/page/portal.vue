@@ -5,6 +5,8 @@
     <div class="main-container" :style="'min-height:' + minHeight">
       <teacher-famous></teacher-famous>
       <course-live></course-live>
+      <learn-path></learn-path>
+      <micro-major></micro-major>
     </div>
     <portal-footer></portal-footer>
   </div>
@@ -15,6 +17,8 @@ import PortalHeader from "../components/portal/header";
 import PortalBanner from "../components/portal/banner";
 import TeacherFamous from "../components/portal/main-famous-teacher";
 import CourseLive from "../components/portal/main-course-live";
+import LearnPath from "../components/portal/main-learn-path.vue";
+import MicroMajor from "../components/portal/main-micro-major";
 import PortalFooter from "../components/portal/footer";
 export default {
   name: "Portal",
@@ -23,6 +27,8 @@ export default {
     PortalBanner,
     TeacherFamous,
     CourseLive,
+    LearnPath,
+    MicroMajor,
     PortalFooter,
   },
   data() {
