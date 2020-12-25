@@ -97,7 +97,7 @@ export default {
     justify-content: space-between;
     .teacher-item {
       width: calc((100% - 20px) / 3);
-      height: 125px;
+      height: 130px;
       border-radius: @card-border-radius;
       display: flex;
       padding: 15px;
