@@ -11,6 +11,7 @@
         <img :src="recommendImg"/>
       </div>
       <series-course></series-course>
+      <best-course></best-course>
     </div>
     <portal-footer></portal-footer>
   </div>
@@ -24,6 +25,7 @@ import CourseLive from "../components/portal/main-course-live";
 import LearnPath from "../components/portal/main-learn-path.vue";
 import MicroMajor from "../components/portal/main-micro-major";
 import SeriesCourse from "../components/portal/main-series-course";
+import BestCourse from "../components/portal/main-best-course.vue";
 import PortalFooter from "../components/portal/footer";
 export default {
   name: "Portal",
@@ -35,6 +37,7 @@ export default {
     LearnPath,
     MicroMajor,
     SeriesCourse,
+    BestCourse,
     PortalFooter,
   },
   data() {
