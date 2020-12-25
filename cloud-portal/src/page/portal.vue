@@ -12,6 +12,12 @@
       </div>
       <series-course></series-course>
       <best-course></best-course>
+      <new-recommend></new-recommend>
+      <free-course></free-course>
+      <div class="bottom">
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
     </div>
     <portal-footer></portal-footer>
   </div>
@@ -26,6 +32,8 @@ import LearnPath from "../components/portal/main-learn-path.vue";
 import MicroMajor from "../components/portal/main-micro-major";
 import SeriesCourse from "../components/portal/main-series-course";
 import BestCourse from "../components/portal/main-best-course.vue";
+import NewRecommend from "../components/portal/main-new-recommend.vue";
+import FreeCourse from "../components/portal/main-free-course.vue";
 import PortalFooter from "../components/portal/footer";
 export default {
   name: "Portal",
@@ -38,6 +46,8 @@ export default {
     MicroMajor,
     SeriesCourse,
     BestCourse,
+    NewRecommend,
+    FreeCourse,
     PortalFooter,
   },
   data() {
@@ -70,6 +80,26 @@ export default {
     .recommend{
       width: 100%;
       margin-top: 20px;
+    }
+    .bottom{
+      width: 100%;
+      margin: 20px 0px;
+      display: flex;
+      justify-content: space-between;
+      .left{
+        width: 960px;
+        height: 130px;
+        background: url("../assets/images/bottom-left.jpg") no-repeat;
+        background-size:100% 100%;
+        cursor: pointer;
+      }
+      .right{
+        width: 225px;
+        height: 130px;
+        background: url("../assets/images/bottom-right.jpg") no-repeat;
+        background-size:100% 100%;
+        cursor: pointer;
+      }
     }
   }
 }
