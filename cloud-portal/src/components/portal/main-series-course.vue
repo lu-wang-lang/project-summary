@@ -6,7 +6,7 @@
     <div class="series-course">
       <div class="series-item" v-for="(series, index) of list" :key="index">
         <div class="img-container">
-          <img :src="series.seriesImg" class="series-img"/>
+          <lazy-image :src="series.seriesImg" class="series-img"/>
         </div>
         <div class="content">
           <div class="title">{{series.title}}</div>
@@ -18,8 +18,12 @@
 </template>
 
 <script>
+import LazyImage from '../common/lazy-image.vue';
 export default {
   name: "TeacherFamous",
+  components:{
+    LazyImage
+  },
   data() {
     return {
       list: [

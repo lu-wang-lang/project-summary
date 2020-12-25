@@ -8,7 +8,7 @@
       <learn-path></learn-path>
       <micro-major></micro-major>
       <div class="recommend">
-        <img :src="recommendImg"/>
+        <lazy-image :src="recommendImg"/>
       </div>
       <series-course></series-course>
       <best-course></best-course>
@@ -35,6 +35,7 @@ import BestCourse from "../components/portal/main-best-course.vue";
 import NewRecommend from "../components/portal/main-new-recommend.vue";
 import FreeCourse from "../components/portal/main-free-course.vue";
 import PortalFooter from "../components/portal/footer";
+import LazyImage from '../components/common/lazy-image.vue';
 export default {
   name: "Portal",
   components: {
@@ -49,6 +50,7 @@ export default {
     NewRecommend,
     FreeCourse,
     PortalFooter,
+    LazyImage,
   },
   data() {
     return {

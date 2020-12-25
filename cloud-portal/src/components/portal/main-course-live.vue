@@ -9,7 +9,7 @@
     <div class="course-live">
       <div class="teacher-item" v-for="(teacher, index) of list" :key="index">
         <div class="teacher-img">
-          <img :src="teacher.teacherImg" />
+          <lazy-image :src="teacher.teacherImg" />
         </div>
         <div class="right-container">
           <div class="time">
@@ -29,8 +29,12 @@
 </template>
 
 <script>
+import LazyImage from '../common/lazy-image.vue';
 export default {
   name: "CourseLive",
+  components:{
+    LazyImage
+  },
   data() {
     return {
       moreImg: require("../../assets/images/right-circle.svg"),

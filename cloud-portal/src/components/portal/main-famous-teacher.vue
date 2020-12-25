@@ -9,7 +9,7 @@
     <div class="teacher-container">
       <div class="teacher-item" v-for="(teacher, index) of list" :key="index">
         <div class="teacher-img">
-          <img :src="teacher.teacherImg" />
+          <lazy-image :src="teacher.teacherImg"></lazy-image>
         </div>
         <div class="right-container">
           <div class="time">{{ teacher.time }}</div>
@@ -26,7 +26,9 @@
 </template>
 
 <script>
+import lazyImage from '../common/lazy-image.vue';
 export default {
+  components: { lazyImage },
   name: "TeacherFamous",
   data() {
     return {

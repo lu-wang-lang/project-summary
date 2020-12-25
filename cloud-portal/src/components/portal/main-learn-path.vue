@@ -8,16 +8,20 @@
     </div>
     <div class="learn-path">
       <div class="path-item" v-for="(path, index) of list" :key="index">
-        <img :src="path.pathImg" class="path-img"/>
+        <lazy-image :src="path.pathImg" class="path-img"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import LazyImage from '../common/lazy-image.vue';
 export default {
   name: "CourseLive",
-  data() {
+  components:{
+    LazyImage
+  },
+  data () {
     return {
       moreImg: require("../../assets/images/right-circle.svg"),
       list: [

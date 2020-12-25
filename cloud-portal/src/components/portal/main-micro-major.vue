@@ -9,7 +9,7 @@
     <div class="micro-major">
       <div class="major-item" v-for="(major, index) of list" :key="index">
         <div class="img-container">
-          <img :src="major.majorImg" class="marjor-img"/>
+          <lazy-image :src="major.majorImg" class="marjor-img"/>
         </div>
         <div class="content-container">
           <div class="title">{{major.title}}</div>
@@ -21,8 +21,10 @@
 </template>
 
 <script>
+import LazyImage from '../common/lazy-image.vue';
 export default {
   name: "TeacherFamous",
+  components:{LazyImage},
   data() {
     return {
       moreImg: require("../../assets/images/right-circle.svg"),

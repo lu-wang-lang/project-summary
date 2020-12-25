@@ -6,7 +6,7 @@
     <div class="best-course">
       <div class="best-item" v-for="(course, index) of list" :key="index">
         <div class="img-container">
-          <img :src="course.bestImg" class="best-img"/>
+          <lazy-image :src="course.bestImg" class="best-img"/>
         </div>
         <div class="content-container">
           <div class="title">{{course.title}}</div>
@@ -18,8 +18,10 @@
 </template>
 
 <script>
+import LazyImage from '../common/lazy-image.vue';
 export default {
   name: "TeacherFamous",
+  components:{LazyImage},
   data() {
     return {
       moreImg: require("../../assets/images/right-circle.svg"),
