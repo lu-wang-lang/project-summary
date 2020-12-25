@@ -7,6 +7,10 @@
       <course-live></course-live>
       <learn-path></learn-path>
       <micro-major></micro-major>
+      <div class="recommend">
+        <img :src="recommendImg"/>
+      </div>
+      <series-course></series-course>
     </div>
     <portal-footer></portal-footer>
   </div>
@@ -19,6 +23,7 @@ import TeacherFamous from "../components/portal/main-famous-teacher";
 import CourseLive from "../components/portal/main-course-live";
 import LearnPath from "../components/portal/main-learn-path.vue";
 import MicroMajor from "../components/portal/main-micro-major";
+import SeriesCourse from "../components/portal/main-series-course";
 import PortalFooter from "../components/portal/footer";
 export default {
   name: "Portal",
@@ -29,11 +34,13 @@ export default {
     CourseLive,
     LearnPath,
     MicroMajor,
+    SeriesCourse,
     PortalFooter,
   },
   data() {
     return {
       minHeight: "0px",
+      recommendImg:require("../assets/images/recommend.jpg"),
     };
   },
   mounted() {
@@ -57,6 +64,10 @@ export default {
     width: 100%;
     padding: 0px calc((100% - @contentWidth) / 2);
     box-sizing: border-box;
+    .recommend{
+      width: 100%;
+      margin-top: 20px;
+    }
   }
 }
 </style>
