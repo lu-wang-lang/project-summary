@@ -49,6 +49,37 @@
         </view>
       </swiper-item>
     </swiper>
+    <view class="goods-container">
+      <view class="title-container">
+        <view class="line-container">
+          <view class="sm"></view>
+          <view class="mid"></view>
+          <view class="big"></view>
+        </view>
+        <image class="title-img" :src="titleImg"></image>
+        <view class="line-container">
+          <view class="big"></view>
+          <view class="mid"></view>
+          <view class="sm"></view>
+        </view>
+      </view>
+      <view class="container">
+        <view class="good-item-container" v-for="(good, index) of goodsList" :key="index">
+          <view v-if="good.isNormal" class="good-item">
+            <image class="good-img" :src="good.image"></image>
+            <view class="title" v-html="good.title"></view>
+            <view class="time">提货时间：{{ good.time }}</view>
+            <view class="bottom">
+              <view class="price">￥<text class="price-text">{{ good.price }}</text></view
+              >
+              <view class="sale">已售{{ good.saleCount }}</view>
+              <view class="cart" @click="addCart(good)">加入购物车</view>
+            </view>
+          </view>
+          <view v-else></view>
+        </view>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -156,6 +187,49 @@ export default {
           },
         ],
       ],
+      titleImg: require("../../assets/images/everyday-select.png"),
+      goodsList: [
+        {
+          isNormal: true,
+          id: 1,
+          image: "../../assets/images/egg.png",
+          title: "语农 散装土鸡蛋  360枚 40斤",
+          time: "08月13日",
+          price: "28.8",
+          saleCount: 2700,
+        },
+        {
+          isNormal: false,
+          id: 2,
+        },
+        {
+          isNormal: true,
+          id: 3,
+          image: "../../assets/images/swiper2.png",
+          title: "新鲜现摘白菜  25千克",
+          time: "08月13日",
+          price: "38",
+          saleCount: 1466,
+        },
+        {
+          isNormal: true,
+          id: 3,
+          image: "../../assets/images/swiper1.png",
+          title: "超白超白洗衣粉  500g 1袋",
+          time: "08月13日",
+          price: "9.9",
+          saleCount: 1466,
+        },
+        {
+          isNormal: true,
+          id: 4,
+          image: "../../assets/images/swiper3.png",
+          title: "超白超白洗衣粉  500g 1袋",
+          time: "08月13日",
+          price: "9.9",
+          saleCount: 1466,
+        },
+      ],
     };
   },
   methods: {
@@ -168,6 +242,9 @@ export default {
       uni.navigateTo({
         url: `/pages/index/index`,
       });
+    },
+    addCart(good){
+
     },
   },
 };
@@ -295,6 +372,115 @@ export default {
             height: 100%;
           }
         }
+      }
+    }
+  }
+  .goods-container {
+    width: 100%;
+    .title-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .line-container {
+        width: 52upx;
+        height: 32upx;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0upx 20upx;
+        .sm {
+          width: 8upx;
+          height: 16upx;
+          background: #fa4f51;
+          opacity: 0.4;
+          border-radius: 2px;
+        }
+        .mid {
+          width: 8upx;
+          height: 24upx;
+          background: #fa4f51;
+          opacity: 0.8;
+          border-radius: 2px;
+        }
+        .big {
+          width: 8upx;
+          height: 32upx;
+          background: #fa4f51;
+          border-radius: 2px;
+        }
+      }
+      .title-img {
+        width: 284upx;
+        height: 60upx;
+      }
+    }
+    .container {
+      width: 100%;
+      padding: 20upx;
+      box-sizing: border-box;
+      .good-item-container {
+        width: 100%;
+        height: 570upx;
+        .good-item {
+          width: 100%;
+          height: 100%;
+          padding: 16upx;
+          box-sizing: border-box;
+          border-radius: 16upx;
+          box-shadow: 0px 1px 4px rgba(204, 204, 204, 0.6),
+            0px 0px 20px rgba(204, 204, 204, 0.3);
+          .good-img {
+            width: 100%;
+            height: 328upx;
+            border-radius: 8upx;
+          }
+          .title {
+            font-size: $font-lg;
+            color: #000;
+            margin: 20upx 0upx 14upx;
+            font-weight: bold;
+          }
+          .time{
+            font-size: 26upx;
+            color: #000;
+            margin-bottom: 14upx;
+          }
+          .bottom{
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            .price{
+              color:#EC0D0D;
+              font-size:$font-sm;
+              margin-right: 40upx;
+              .price-text{
+                font-size: $font-lg;
+                font-weight: bold;
+              }
+            }
+            .sale{
+              font-size: $font-base;
+              color:rgba(0,0,0,0.54);
+            }
+            .cart{
+              position: absolute;
+              right:32upx;
+              top:-6upx;
+              width: 208upx;
+              height: 60upx;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color:white;
+              background: #EC0D0D;
+              font-size: $font-base;
+              border-radius: 30upx;
+            }
+          }
+        }
+      }
+      .good-item-container + .good-item-container {
+        margin-bottom: 40upx;
       }
     }
   }

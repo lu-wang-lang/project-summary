@@ -189,6 +189,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   name: "HomePage",
@@ -289,8 +320,51 @@ var _default =
       {
         id: 4,
         title: "水产区",
-        image: __webpack_require__(/*! ../../assets/images/block6.png */ 40) }]] };
+        image: __webpack_require__(/*! ../../assets/images/block6.png */ 40) }]],
 
+
+
+      titleImg: __webpack_require__(/*! ../../assets/images/everyday-select.png */ 42),
+      goodsList: [
+      {
+        isNormal: true,
+        id: 1,
+        image: "../../assets/images/egg.png",
+        title: "语农 散装土鸡蛋  360枚 40斤",
+        time: "08月13日",
+        price: "28.8",
+        saleCount: 2700 },
+
+      {
+        isNormal: false,
+        id: 2 },
+
+      {
+        isNormal: true,
+        id: 3,
+        image: "../../assets/images/swiper2.png",
+        title: "新鲜现摘白菜  25千克",
+        time: "08月13日",
+        price: "38",
+        saleCount: 1466 },
+
+      {
+        isNormal: true,
+        id: 3,
+        image: "../../assets/images/swiper1.png",
+        title: "超白超白洗衣粉  500g 1袋",
+        time: "08月13日",
+        price: "9.9",
+        saleCount: 1466 },
+
+      {
+        isNormal: true,
+        id: 4,
+        image: "../../assets/images/swiper3.png",
+        title: "超白超白洗衣粉  500g 1袋",
+        time: "08月13日",
+        price: "9.9",
+        saleCount: 1466 }] };
 
 
 
@@ -304,6 +378,9 @@ var _default =
     goBannerDetail: function goBannerDetail() {
       uni.navigateTo({
         url: "/pages/index/index" });
+
+    },
+    addCart: function addCart(good) {
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
