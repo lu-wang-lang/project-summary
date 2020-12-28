@@ -65,18 +65,25 @@
       </view>
       <view class="container">
         <view class="good-item-container" v-for="(good, index) of goodsList" :key="index">
-          <view v-if="good.isNormal" class="good-item">
+          <view v-if="good.isNormal" class="good-item out-line">
             <image class="good-img" :src="good.image"></image>
             <view class="title" v-html="good.title"></view>
             <view class="time">提货时间：{{ good.time }}</view>
             <view class="bottom">
-              <view class="price">￥<text class="price-text">{{ good.price }}</text></view
+              <view class="price"
+                >￥<text class="price-text">{{ good.price }}</text></view
               >
               <view class="sale">已售{{ good.saleCount }}</view>
               <view class="cart" @click="addCart(good)">加入购物车</view>
             </view>
           </view>
-          <view v-else></view>
+          <view v-else class="other-container">
+            <view class="left out-line"></view>
+            <view class="right">
+              <view class="right-top out-line"></view>
+              <view class="right-bottom out-line"></view>
+            </view>
+          </view>
         </view>
       </view>
     </view>
@@ -243,9 +250,7 @@ export default {
         url: `/pages/index/index`,
       });
     },
-    addCart(good){
-
-    },
+    addCart(good) {},
   },
 };
 </script>
@@ -424,11 +429,6 @@ export default {
         .good-item {
           width: 100%;
           height: 100%;
-          padding: 16upx;
-          box-sizing: border-box;
-          border-radius: 16upx;
-          box-shadow: 0px 1px 4px rgba(204, 204, 204, 0.6),
-            0px 0px 20px rgba(204, 204, 204, 0.3);
           .good-img {
             width: 100%;
             height: 328upx;
@@ -440,49 +440,78 @@ export default {
             margin: 20upx 0upx 14upx;
             font-weight: bold;
           }
-          .time{
+          .time {
             font-size: 26upx;
             color: #000;
             margin-bottom: 14upx;
           }
-          .bottom{
+          .bottom {
             display: flex;
             align-items: flex-end;
             position: relative;
-            .price{
-              color:#EC0D0D;
-              font-size:$font-sm;
+            .price {
+              color: #ec0d0d;
+              font-size: $font-sm;
               margin-right: 40upx;
-              .price-text{
+              .price-text {
                 font-size: $font-lg;
                 font-weight: bold;
               }
             }
-            .sale{
+            .sale {
               font-size: $font-base;
-              color:rgba(0,0,0,0.54);
+              color: rgba(0, 0, 0, 0.54);
             }
-            .cart{
+            .cart {
               position: absolute;
-              right:32upx;
-              top:-6upx;
+              right: 32upx;
+              top: -6upx;
               width: 208upx;
               height: 60upx;
               display: flex;
               justify-content: center;
               align-items: center;
-              color:white;
-              background: #EC0D0D;
+              color: white;
+              background: #ec0d0d;
               font-size: $font-base;
               border-radius: 30upx;
             }
           }
         }
+        .other-container {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+          .left {
+            width: calc((100% - 18upx) / 2);
+            height: 100%;
+          }
+          .right {
+            width: calc((100% - 18upx) / 2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .right-top,
+            .right-bottom {
+              width: 100%;
+              height: calc((100% - 12upx) / 2);
+            }
+          }
+        }
       }
-      .good-item-container + .good-item-container {
+      .good-item-container {
         margin-bottom: 40upx;
       }
     }
+  }
+  .out-line {
+    padding: 16upx;
+    box-sizing: border-box;
+    border-radius: 16upx;
+    box-shadow: 0px 1px 4px rgba(204, 204, 204, 0.6),
+      0px 0px 20px rgba(204, 204, 204, 0.3);
   }
 }
 </style>

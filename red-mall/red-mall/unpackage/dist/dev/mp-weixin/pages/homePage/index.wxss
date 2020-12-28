@@ -254,10 +254,6 @@ page {
 .home-page-container .goods-container .container .good-item-container .good-item {
   width: 100%;
   height: 100%;
-  padding: 16rpx;
-  box-sizing: border-box;
-  border-radius: 16rpx;
-  box-shadow: 0px 1px 4px rgba(204, 204, 204, 0.6), 0px 0px 20px rgba(204, 204, 204, 0.3);
 }
 .home-page-container .goods-container .container .good-item-container .good-item .good-img {
   width: 100%;
@@ -285,7 +281,7 @@ page {
   position: relative;
 }
 .home-page-container .goods-container .container .good-item-container .good-item .bottom .price {
-  color: #EC0D0D;
+  color: #ec0d0d;
   font-size: 24rpx;
   margin-right: 40rpx;
 }
@@ -313,11 +309,50 @@ page {
   -webkit-align-items: center;
           align-items: center;
   color: white;
-  background: #EC0D0D;
+  background: #ec0d0d;
   font-size: 28rpx;
   border-radius: 30rpx;
 }
-.home-page-container .goods-container .container .good-item-container + .good-item-container {
+.home-page-container .goods-container .container .good-item-container .other-container {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.home-page-container .goods-container .container .good-item-container .other-container .left {
+  width: calc((100% - 18rpx) / 2);
+  height: 100%;
+}
+.home-page-container .goods-container .container .good-item-container .other-container .right {
+  width: calc((100% - 18rpx) / 2);
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.home-page-container .goods-container .container .good-item-container .other-container .right .right-top,
+.home-page-container .goods-container .container .good-item-container .other-container .right .right-bottom {
+  width: 100%;
+  height: calc((100% - 12rpx) / 2);
+}
+.home-page-container .goods-container .container .good-item-container {
   margin-bottom: 40rpx;
+}
+.home-page-container .out-line {
+  padding: 16rpx;
+  box-sizing: border-box;
+  border-radius: 16rpx;
+  box-shadow: 0px 1px 4px rgba(204, 204, 204, 0.6), 0px 0px 20px rgba(204, 204, 204, 0.3);
 }
 
