@@ -177,6 +177,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   name: "HomePage",
@@ -203,8 +215,85 @@ var _default =
       indicatorDots: true, // 显示面板指示点
       autoplay: true, // 自动播放
       interval: 2000, // 自动切换间隔
-      duration: 500 // 滑动时长
-    };
+      duration: 500, // 滑动时长
+      // blockInterval: 5000,
+      blockList: [
+      [
+      {
+        id: 1,
+        title: "今日新品",
+        image: __webpack_require__(/*! ../../assets/images/block3.png */ 37) },
+
+      {
+        id: 2,
+        title: "水果区",
+        image: __webpack_require__(/*! ../../assets/images/block4.png */ 38) },
+
+      {
+        id: 3,
+        title: "蔬菜区",
+        image: __webpack_require__(/*! ../../assets/images/block5.png */ 39) },
+
+      {
+        id: 4,
+        title: "水产区",
+        image: __webpack_require__(/*! ../../assets/images/block6.png */ 40) },
+
+      {
+        id: 5,
+        title: "肉类区",
+        image: __webpack_require__(/*! ../../assets/images/block7.png */ 41) },
+
+      {
+        id: 6,
+        title: "蛋类区",
+        image: __webpack_require__(/*! ../../assets/images/block5.png */ 39) },
+
+      {
+        id: 7,
+        title: "豆制区",
+        image: __webpack_require__(/*! ../../assets/images/block4.png */ 38) },
+
+      {
+        id: 8,
+        title: "生鲜区",
+        image: __webpack_require__(/*! ../../assets/images/block3.png */ 37) },
+
+      {
+        id: 9,
+        title: "水产区",
+        image: __webpack_require__(/*! ../../assets/images/block7.png */ 41) },
+
+      {
+        id: 10,
+        title: "蔬菜区",
+        image: __webpack_require__(/*! ../../assets/images/block6.png */ 40) }],
+
+
+      [
+      {
+        id: 1,
+        title: "今日新品",
+        image: __webpack_require__(/*! ../../assets/images/block3.png */ 37) },
+
+      {
+        id: 2,
+        title: "水果区",
+        image: __webpack_require__(/*! ../../assets/images/block4.png */ 38) },
+
+      {
+        id: 3,
+        title: "蔬菜区",
+        image: __webpack_require__(/*! ../../assets/images/block5.png */ 39) },
+
+      {
+        id: 4,
+        title: "水产区",
+        image: __webpack_require__(/*! ../../assets/images/block6.png */ 40) }]] };
+
+
+
+
   },
   methods: {
     handleSearch: function handleSearch() {

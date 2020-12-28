@@ -37,6 +37,18 @@
         <image class="swiper-img" :src="item.image"></image>
       </swiper-item>
     </swiper>
+    <swiper class="module-block-container" v-if="blockList.length">
+      <swiper-item v-for="(blocks, idx) in blockList" :key="idx">
+        <view class="module-block">
+          <view class="block-item" v-for="(item, index) of blocks" :key="index">
+            <view class="img-container">
+              <image class="block-img" :src="item.image"></image>
+            </view>
+            <view>{{ item.title }}</view>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
   </view>
 </template>
 
@@ -67,6 +79,83 @@ export default {
       autoplay: true, // 自动播放
       interval: 2000, // 自动切换间隔
       duration: 500, // 滑动时长
+      // blockInterval: 5000,
+      blockList: [
+        [
+          {
+            id: 1,
+            title: "今日新品",
+            image: require("../../assets/images/block3.png"),
+          },
+          {
+            id: 2,
+            title: "水果区",
+            image: require("../../assets/images/block4.png"),
+          },
+          {
+            id: 3,
+            title: "蔬菜区",
+            image: require("../../assets/images/block5.png"),
+          },
+          {
+            id: 4,
+            title: "水产区",
+            image: require("../../assets/images/block6.png"),
+          },
+          {
+            id: 5,
+            title: "肉类区",
+            image: require("../../assets/images/block7.png"),
+          },
+          {
+            id: 6,
+            title: "蛋类区",
+            image: require("../../assets/images/block5.png"),
+          },
+          {
+            id: 7,
+            title: "豆制区",
+            image: require("../../assets/images/block4.png"),
+          },
+          {
+            id: 8,
+            title: "生鲜区",
+            image: require("../../assets/images/block3.png"),
+          },
+          {
+            id: 9,
+            title: "水产区",
+            image: require("../../assets/images/block7.png"),
+          },
+          {
+            id: 10,
+            title: "蔬菜区",
+            image: require("../../assets/images/block6.png"),
+          },
+        ],
+        [
+          {
+            id: 1,
+            title: "今日新品",
+            image: require("../../assets/images/block3.png"),
+          },
+          {
+            id: 2,
+            title: "水果区",
+            image: require("../../assets/images/block4.png"),
+          },
+          {
+            id: 3,
+            title: "蔬菜区",
+            image: require("../../assets/images/block5.png"),
+          },
+          {
+            id: 4,
+            title: "水产区",
+            image: require("../../assets/images/block6.png"),
+          },
+        ],
+      ],
     };
   },
   methods: {
@@ -175,6 +264,37 @@ export default {
         width: 100%;
         height: 100%;
         border-radius: 16upx;
+      }
+    }
+  }
+  .module-block-container {
+    width: 100%;
+    height: 426upx;
+    padding: 30upx 26upx;
+    box-sizing: border-box;
+    .module-block {
+      widows: 100%;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .block-item {
+        width: calc((100% - 144upx) / 4);
+        height: 162upx;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .img-container {
+          width: 114upx;
+          height: 114upx;
+          border-radius: 50%;
+          overflow: hidden;
+          margin-bottom: 18upx;
+          .block-img {
+            width: 100%;
+            height: 100%;
+          }
+        }
       }
     }
   }
