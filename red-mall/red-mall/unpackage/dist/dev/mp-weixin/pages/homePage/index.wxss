@@ -1,0 +1,146 @@
+@charset "UTF-8";
+/* 页面左右间距 */
+/* 文字尺寸 */
+/*文字颜色*/
+/* 边框颜色 */
+/* 图片加载中颜色 */
+/* 行为相关颜色 */
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+/*清除浮动代码*/
+.clearfloat:before,
+.clearfloat:after {
+  content: "";
+  display: table;
+}
+.clearfloat:after {
+  clear: both;
+  overflow: hidden;
+}
+.clearfloat {
+  zoom: 1;
+}
+.vipList {
+  width: 100%;
+}
+page,
+page {
+  width: 100%;
+  height: 100%;
+  font-size: 24rpx;
+}
+._div {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+.home-page-container {
+  position: relative;
+}
+.home-page-container .top-container {
+  width: 100%;
+  padding: 60rpx 0rpx 20rpx;
+  background: #fa4f51;
+}
+.home-page-container .top-container .title-image-container {
+  width: 100%;
+  height: 152rpx;
+  padding-left: 34rpx;
+  box-sizing: border-box;
+}
+.home-page-container .top-container .title-image-container .top {
+  width: 242rpx;
+  height: 68rpx;
+  margin-left: 20rpx;
+}
+.home-page-container .top-container .title-image-container .bottom {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.home-page-container .top-container .title-image-container .bottom .bottom-left {
+  width: 376rpx;
+  height: 64rpx;
+}
+.home-page-container .top-container .title-image-container .bottom .bottom-right-cntainer {
+  width: 160rpx;
+  height: 60rpx;
+  border: 2rpx solid white;
+  border-right: none;
+  border-top-left-radius: 30rpx;
+  border-bottom-left-radius: 30rpx;
+  font-size: 24rpx;
+  color: white;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.home-page-container .top-container .title-image-container .bottom .bottom-right-cntainer .live-img {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.home-page-container .top-container .search {
+  width: 704rpx;
+  height: 68rpx;
+  background: white;
+  border-radius: 16rpx;
+  margin: 18rpx auto;
+  margin-bottom: 0rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding: 0rpx 18rpx;
+  color: #828282;
+  box-sizing: border-box;
+}
+.home-page-container .top-container .search .search-img {
+  width: 42rpx;
+  height: 42rpx;
+}
+.home-page-container .top-container .search .placeholder {
+  font-size: 28rpx;
+  margin-left: 14rpx;
+}
+.home-page-container .background-bg {
+  position: absolute;
+  width: 100%;
+  height: 416rpx;
+  background: #fa4f51;
+  top: 148rpx;
+  z-index: -99;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+.home-page-container .swiper-container {
+  width: 704rpx;
+  height: 320rpx;
+  border-radius: 16rpx;
+  margin: 0rpx auto;
+}
+.home-page-container .swiper-container .swiper-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+}
+
