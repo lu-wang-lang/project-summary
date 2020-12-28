@@ -8084,13 +8084,33 @@ module.exports = __webpack_require__.p + "static/img/mb-search.2bfc397d.svg";
 /* 32 */,
 /* 33 */,
 /* 34 */
-/*!******************************************************************************!*\
-  !*** D:/code/project-summary/red-mall/red-mall/assets/images/swiper-img.png ***!
-  \******************************************************************************/
+/*!***************************************************************************!*\
+  !*** D:/code/project-summary/red-mall/red-mall/assets/images/swiper1.png ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/assets/images/swiper-img.png";
+module.exports = "/assets/images/swiper1.png";
+
+/***/ }),
+/* 35 */
+/*!***************************************************************************!*\
+  !*** D:/code/project-summary/red-mall/red-mall/assets/images/swiper2.png ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/assets/images/swiper2.png";
+
+/***/ }),
+/* 36 */
+/*!***************************************************************************!*\
+  !*** D:/code/project-summary/red-mall/red-mall/assets/images/swiper3.png ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/assets/images/swiper3.png";
 
 /***/ })
 ]]);

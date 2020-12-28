@@ -160,6 +160,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   name: "HomePage",
@@ -169,11 +186,33 @@ var _default =
       leftBottomImg: __webpack_require__(/*! ../../assets/images/eat-good-long.png */ 18),
       liveImg: __webpack_require__(/*! ../../assets/images/live.svg */ 19),
       searchImg: __webpack_require__(/*! ../../assets/images/mb-search.svg */ 20),
-      swiperImg: __webpack_require__(/*! ../../assets/images/swiper-img.png */ 34) };
+      bannerList: [
+      {
+        id: 1,
+        image: __webpack_require__(/*! ../../assets/images/swiper1.png */ 34) },
 
+      {
+        id: 2,
+        image: __webpack_require__(/*! ../../assets/images/swiper2.png */ 35) },
+
+      {
+        id: 3,
+        image: __webpack_require__(/*! ../../assets/images/swiper3.png */ 36) }],
+
+
+      indicatorDots: true, // 显示面板指示点
+      autoplay: true, // 自动播放
+      interval: 2000, // 自动切换间隔
+      duration: 500 // 滑动时长
+    };
   },
   methods: {
     handleSearch: function handleSearch() {
+      uni.navigateTo({
+        url: "/pages/index/index" });
+
+    },
+    goBannerDetail: function goBannerDetail() {
       uni.navigateTo({
         url: "/pages/index/index" });
 

@@ -17,9 +17,26 @@
       </view>
     </view>
     <view class="background-bg"></view>
-    <view class="swiper-container">
-      <image class="swiper-img" :src="swiperImg"></image>
-    </view>
+    <swiper
+      class="swiper-container"
+      v-if="bannerList.length"
+      :indicator-dots="indicatorDots"
+      indicator-color="#C8C5E1"
+      indicator-active-color="#fff"
+      :autoplay="autoplay"
+      :interval="interval"
+      :duration="duration"
+      :circular="true"
+    >
+      <swiper-item
+        v-for="(item, index) in bannerList"
+        :key="index"
+        @click="goBannerDetail(item, true)"
+        class="swiper-item"
+      >
+        <image class="swiper-img" :src="item.image"></image>
+      </swiper-item>
+    </swiper>
   </view>
 </template>
 
@@ -32,11 +49,33 @@ export default {
       leftBottomImg: require("../../assets/images/eat-good-long.png"),
       liveImg: require("../../assets/images/live.svg"),
       searchImg: require("../../assets/images/mb-search.svg"),
-      swiperImg:require("../../assets/images/swiper-img.png")
+      bannerList: [
+        {
+          id: 1,
+          image: require("../../assets/images/swiper1.png"),
+        },
+        {
+          id: 2,
+          image: require("../../assets/images/swiper2.png"),
+        },
+        {
+          id: 3,
+          image: require("../../assets/images/swiper3.png"),
+        },
+      ],
+      indicatorDots: true, // 显示面板指示点
+      autoplay: true, // 自动播放
+      interval: 2000, // 自动切换间隔
+      duration: 500, // 滑动时长
     };
   },
   methods: {
     handleSearch() {
+      uni.navigateTo({
+        url: `/pages/index/index`,
+      });
+    },
+    goBannerDetail() {
       uni.navigateTo({
         url: `/pages/index/index`,
       });
@@ -124,15 +163,19 @@ export default {
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
   }
-  .swiper-container{
+  .swiper-container {
     width: 704upx;
     height: 320upx;
     border-radius: 16upx;
     margin: 0upx auto;
-    .swiper-img{
-      width: 100%;
-      height: 100%;
+    overflow: hidden;
+    .swiper-item {
       border-radius: 16upx;
+      .swiper-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 16upx;
+      }
     }
   }
 }
