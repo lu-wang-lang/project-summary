@@ -131,6 +131,9 @@
         </view>
       </view>
     </view>
+    <view class="not-sign-container">
+      <image class="close-img" :src="closeImg"></image>
+    </view>
   </view>
 </template>
 
@@ -284,6 +287,7 @@ export default {
       meatImg: require("../../assets/images/meat.gif"),
       vegetablesImg: require("../../assets/images/vegetables.png"),
       fruitImg: require("../../assets/images/fruit.png"),
+      closeImg:require("../../assets/images/highlight_off.svg")
     };
   },
   methods: {
