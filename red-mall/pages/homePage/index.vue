@@ -93,8 +93,38 @@
                 <view class="go-button">GO>></view>
               </view>
               <view class="right">
-                <view class="right-top out-line"></view>
-                <view class="right-bottom out-line"></view>
+                <view class="right-top out-line">
+                  <view class="top"><text>家常蔬菜</text><text>惊爆价</text></view>
+                  <view class="middle">
+                    <view class="middle-left">
+                      <view class="price">
+                        <text>低至<text>
+                        <text class="price-text">1.99</text>
+                        <text>元起</text>
+                      </view>
+                      <view class="go-button">GO>></view>
+                    </view>
+                    <view class="middle-right">
+                      <image class="vegetables-img" :src="vegetablesImg"></image>
+                    </view>
+                  </view>
+                </view>
+                <view class="right-bottom out-line">
+                  <view class="top"><text>必备水果</text><text>惊爆价</text></view>
+                  <view class="middle">
+                    <view class="middle-left">
+                      <view class="price">
+                        <text>低至<text>
+                        <text class="price-text">0.99</text>
+                        <text>元起</text>
+                      </view>
+                      <view class="go-button">GO>></view>
+                    </view>
+                    <view class="middle-right">
+                      <image class="vegetables-img" :src="fruitImg"></image>
+                    </view>
+                  </view>
+                </view>
               </view>
             </view>
           </view>
@@ -252,6 +282,8 @@ export default {
         },
       ],
       meatImg: require("../../assets/images/meat.gif"),
+      vegetablesImg: require("../../assets/images/vegetables.png"),
+      fruitImg: require("../../assets/images/fruit.png"),
     };
   },
   methods: {
@@ -513,34 +545,34 @@ export default {
                 color: #101010;
                 margin-bottom: 24upx;
               }
-              .category{
+              .category {
                 font-size: 26upx;
                 font-weight: bold;
                 color: #101010;
                 margin-bottom: 20upx;
-                .meat-item{
+                .meat-item {
                   margin-right: 10upx;
                 }
               }
-              .price{
+              .price {
                 font-size: 26upx;
                 font-weight: bold;
                 color: #101010;
               }
-              .meat-img{
+              .meat-img {
                 width: 100%;
                 height: 218upx;
                 border-radius: 16upx;
                 margin-top: 24upx;
               }
-              .go-button{
+              .go-button {
                 width: 110upx;
                 height: 40upx;
                 position: absolute;
-                right:10%;
-                top:140upx;
-                background:#FBD841;
-                color:white;
+                right: 10%;
+                top: 140upx;
+                background: #fbd841;
+                color: white;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -556,8 +588,58 @@ export default {
               justify-content: space-between;
               .right-top,
               .right-bottom {
+                position: relative;
                 width: 100%;
                 height: calc((100% - 12upx) / 2);
+                .top {
+                  font-size: $font-lg;
+                  font-weight: bold;
+                  color: #101010;
+                  margin-bottom: 24upx;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                }
+                .middle{
+                  display: flex;
+                  justify-content: space-between;
+                  .middle-left{
+                    flex:1;
+                    .price {
+                      font-size: 26upx;
+                      font-weight: bold;
+                      color: #101010;
+                      margin-bottom: 24upx;
+                      .price-text {
+                        font-size: $font-lg;
+                        color: #ec0d0d;
+                      }
+                    }
+                    .go-button {
+                      width: 110upx;
+                      height: 40upx;
+                      position: absolute;
+                      top: 140upx;
+                      background: #fbd841;
+                      color: white;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      font-size: $font-base;
+                      border-radius: 20upx;
+                    }
+                  }
+                  .middle-right{
+                    width: 140upx;
+                    height: 110upx;
+                    border-radius: 8upx;
+                    overflow: hidden;
+                    .vegetables-img{
+                      width: 100%;
+                      height: 100%;
+                    }
+                  }
+                }
               }
             }
           }
