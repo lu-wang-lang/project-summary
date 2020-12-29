@@ -28,5 +28,37 @@
 				"query": "" //启动参数，在页面的onLoad函数里面得到
 			}
 		]
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#EC0D0D",
+		"borderStyle": "black",
+		"backgroundColor": "#FFFFFF",
+		"list": [
+			{
+				"pagePath": "pages/homePage/index",
+				"text": "首页",
+				"iconPath": "static/img/tabbar/home.png",
+				"selectedIconPath": "static/img/tabbar/home-active.png"
+			},
+			{
+				"pagePath": "pages/homePage/index",
+				"iconPath": "static/img/tabbar/category.png",
+				"selectedIconPath": "static/img/tabbar/category-active.png",
+				"text": "分类"
+			},
+			{
+				"pagePath": "pages/homePage/index",
+				"iconPath": "static/img/tabbar/cart.png",
+				"selectedIconPath": "static/img/tabbar/cart-active.png",
+				"text": "购物车"
+			},
+			{
+				"pagePath": "pages/homePage/index",
+				"iconPath": "static/img/tabbar/mine.png",
+				"selectedIconPath": "static/img/tabbar/mine-active.png",
+				"text": "我的"
+			}
+		]
 	}
 }
