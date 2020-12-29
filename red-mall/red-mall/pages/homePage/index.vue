@@ -199,7 +199,7 @@ export default {
         {
           isNormal: true,
           id: 1,
-          image: "../../assets/images/egg.png",
+          image: "../../assets/images/swiper1.png",
           title: "语农 散装土鸡蛋  360枚 40斤",
           time: "08月13日",
           price: "28.8",
@@ -505,13 +505,6 @@ export default {
         margin-bottom: 40upx;
       }
     }
-  }
-  .out-line {
-    padding: 16upx;
-    box-sizing: border-box;
-    border-radius: 16upx;
-    box-shadow: 0px 1px 4px rgba(204, 204, 204, 0.6),
-      0px 0px 20px rgba(204, 204, 204, 0.3);
   }
 }
 </style>

@@ -39,6 +39,12 @@ page {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
 }
+.out-line {
+  padding: 16rpx;
+  box-sizing: border-box;
+  border-radius: 16rpx;
+  box-shadow: 0px 1px 4px rgba(204, 204, 204, 0.6), 0px 0px 20px rgba(204, 204, 204, 0.3);
+}
 .home-page-container {
   position: relative;
 }
@@ -348,11 +354,5 @@ page {
 }
 .home-page-container .goods-container .container .good-item-container {
   margin-bottom: 40rpx;
-}
-.home-page-container .out-line {
-  padding: 16rpx;
-  box-sizing: border-box;
-  border-radius: 16rpx;
-  box-shadow: 0px 1px 4px rgba(204, 204, 204, 0.6), 0px 0px 20px rgba(204, 204, 204, 0.3);
 }
 

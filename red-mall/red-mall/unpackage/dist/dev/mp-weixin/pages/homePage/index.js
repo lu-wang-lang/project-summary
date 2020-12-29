@@ -336,7 +336,7 @@ var _default =
       {
         isNormal: true,
         id: 1,
-        image: "../../assets/images/egg.png",
+        image: "../../assets/images/swiper1.png",
         title: "语农 散装土鸡蛋  360枚 40斤",
         time: "08月13日",
         price: "28.8",
