@@ -1,0 +1,112 @@
+/* 页面左右间距 */
+$page-row-spacing: 30upx;
+$page-color-base: #f8f8f8;
+$page-color-light: #f8f6fc;
+$base-color: #fa436a;
+
+/* 文字尺寸 */
+$font-sm: 24upx; //12px
+$font-base: 28upx; //14px
+$font-lg: 32upx; //16px
+/*文字颜色*/
+$font-color-dark: #303133;
+$font-color-base: #606266;
+$font-color-light: #909399;
+$font-color-disabled: #c0c4cc;
+$font-color-spec: #4399fc;
+/* 边框颜色 */
+$border-color-dark: #dcdfe6;
+$border-color-base: #e4e7ed;
+$border-color-light: #ebeef5;
+/* 图片加载中颜色 */
+$image-bg-color: #eee;
+/* 行为相关颜色 */
+$uni-color-primary: #fa436a;
+$uni-color-success: #4cd964;
+$uni-color-warning: #f0ad4e;
+$uni-color-error: #dd524d;
+
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+
+/*清除浮动代码*/
+.clearfloat:before,
+.clearfloat:after {
+  content: "";
+  display: table;
+}
+
+.clearfloat:after {
+  clear: both;
+  overflow: hidden;
+}
+
+.clearfloat {
+  zoom: 1;
+}
+
+.vipList {
+  width: 100%;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 24upx;
+}
+@mixin boxSizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@mixin borderRadius($px) {
+  -moz-border-radius: $px;
+  -ms-border-radius: $px;
+  -o-border-radius: $px;
+  border-radius: $px;
+}
+@mixin boxShadow($x, $y, $m, $f, $c) {
+  -webkit-box-shadow: $x $y $m $f $c;
+  -moz-box-shadow: $x $y $m $f $c;
+  box-shadow: $x $y $m $f $c;
+  box-shadow: $x $y $m $f $c;
+}
+@mixin gradient($deg, $leftCol, $rightCol) {
+  background: -webkit-linear-gradient($deg, $leftCol, $rightCol);
+  background: -o-linear-gradient($deg, $leftCol, $rightCol);
+  background: linear-gradient($deg, $leftCol, $rightCol);
+}
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@mixin moreEllipsis($length) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $length;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
+}
+div{
+  @include boxSizing;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+$card-box-shadow:0px 1px 4px rgba(204, 204, 204, 0.6),
+0px 0px 20px rgba(204, 204, 204, 0.3);
+
+.out-line {
+  padding: 16upx;
+  box-sizing: border-box;
+  border-radius: 16upx;
+  box-shadow: $card-box-shadow;
+}
