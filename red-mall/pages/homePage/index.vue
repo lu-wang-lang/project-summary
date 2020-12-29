@@ -132,7 +132,11 @@
       </view>
     </view>
     <view class="not-sign-container">
-      <image class="close-img" :src="closeImg"></image>
+      <view class="sign-left">
+        <image class="close-img" :src="closeImg"></image>
+        <text>登录抢爆款商品</text>
+      </view>
+      <view class="sign-right">立即登录</view>
     </view>
   </view>
 </template>
@@ -287,7 +291,7 @@ export default {
       meatImg: require("../../assets/images/meat.gif"),
       vegetablesImg: require("../../assets/images/vegetables.png"),
       fruitImg: require("../../assets/images/fruit.png"),
-      closeImg:require("../../assets/images/highlight_off.svg")
+      closeImg: require("../../assets/images/md-off.svg"),
     };
   },
   methods: {
@@ -652,6 +656,41 @@ export default {
       .good-item-container {
         margin-bottom: 40upx;
       }
+    }
+  }
+  .not-sign-container{
+    width: 700upx;
+    height: 70upx;
+    margin: 0upx auto;
+    border-radius: 35upx;
+    background: rgba(16,16,16,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0upx 24upx;
+    box-sizing: border-box;
+    margin-bottom: 40upx;
+    .sign-left{
+      color:white;
+      font-size: $font-base;
+      display: flex;
+      align-items: center;
+      .close-img{
+        width: 46upx;
+        height: 46upx;
+        margin-right:16upx;
+      }
+    }
+    .sign-right{
+      width: 170upx;
+      height: 44upx;
+      border-radius: 22upx;
+      color:white;
+      background:#EC0D0D;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: $font-sm;
     }
   }
 }
