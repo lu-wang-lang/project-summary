@@ -50,19 +50,6 @@
       </swiper-item>
     </swiper>
     <view class="goods-container">
-      <view class="title-container">
-        <view class="line-container">
-          <view class="sm"></view>
-          <view class="mid"></view>
-          <view class="big"></view>
-        </view>
-        <image class="title-img" :src="titleImg"></image>
-        <view class="line-container">
-          <view class="big"></view>
-          <view class="mid"></view>
-          <view class="sm"></view>
-        </view>
-      </view>
       <view class="container">
         <view class="good-item-container" v-for="(good, index) of goodsList" :key="index">
           <view v-if="good.isNormal" class="good-item out-line">
@@ -77,11 +64,26 @@
               <view class="cart" @click="addCart(good)">加入购物车</view>
             </view>
           </view>
-          <view v-else class="other-container">
-            <view class="left out-line"></view>
-            <view class="right">
-              <view class="right-top out-line"></view>
-              <view class="right-bottom out-line"></view>
+          <view v-else class="other-item">
+            <view class="title-container">
+              <view class="line-container">
+                <view class="sm"></view>
+                <view class="mid"></view>
+                <view class="big"></view>
+              </view>
+              <image class="title-img" :src="titleImg"></image>
+              <view class="line-container">
+                <view class="big"></view>
+                <view class="mid"></view>
+                <view class="sm"></view>
+              </view>
+            </view>
+            <view class="other-container">
+              <view class="left out-line"></view>
+              <view class="right">
+                <view class="right-top out-line"></view>
+                <view class="right-bottom out-line"></view>
+              </view>
             </view>
           </view>
         </view>
@@ -382,53 +384,16 @@ export default {
   }
   .goods-container {
     width: 100%;
-    .title-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .line-container {
-        width: 52upx;
-        height: 32upx;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 0upx 20upx;
-        .sm {
-          width: 8upx;
-          height: 16upx;
-          background: #fa4f51;
-          opacity: 0.4;
-          border-radius: 2px;
-        }
-        .mid {
-          width: 8upx;
-          height: 24upx;
-          background: #fa4f51;
-          opacity: 0.8;
-          border-radius: 2px;
-        }
-        .big {
-          width: 8upx;
-          height: 32upx;
-          background: #fa4f51;
-          border-radius: 2px;
-        }
-      }
-      .title-img {
-        width: 284upx;
-        height: 60upx;
-      }
-    }
     .container {
       width: 100%;
       padding: 20upx;
+      padding-top: 0upx;
       box-sizing: border-box;
       .good-item-container {
         width: 100%;
-        height: 570upx;
         .good-item {
           width: 100%;
-          height: 100%;
+          height: 570upx;
           .good-img {
             width: 100%;
             height: 328upx;
@@ -478,25 +443,68 @@ export default {
             }
           }
         }
-        .other-container {
+        .other-item {
           width: 100%;
-          height: 100%;
           display: flex;
-          justify-content: space-between;
-          .left {
-            width: calc((100% - 18upx) / 2);
-            height: 100%;
-          }
-          .right {
-            width: calc((100% - 18upx) / 2);
-            height: 100%;
+          flex-direction: column;
+          .title-container {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 20upx;
+            .line-container {
+              width: 52upx;
+              height: 32upx;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin: 0upx 20upx;
+              .sm {
+                width: 8upx;
+                height: 16upx;
+                background: #fa4f51;
+                opacity: 0.4;
+                border-radius: 2px;
+              }
+              .mid {
+                width: 8upx;
+                height: 24upx;
+                background: #fa4f51;
+                opacity: 0.8;
+                border-radius: 2px;
+              }
+              .big {
+                width: 8upx;
+                height: 32upx;
+                background: #fa4f51;
+                border-radius: 2px;
+              }
+            }
+            .title-img {
+              width: 284upx;
+              height: 60upx;
+            }
+          }
+          .other-container {
+            width: 100%;
+            height: 430upx;
+            display: flex;
             justify-content: space-between;
-            .right-top,
-            .right-bottom {
-              width: 100%;
-              height: calc((100% - 12upx) / 2);
+            .left {
+              width: calc((100% - 18upx) / 2);
+              height: 100%;
+            }
+            .right {
+              width: calc((100% - 18upx) / 2);
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              .right-top,
+              .right-bottom {
+                width: 100%;
+                height: calc((100% - 12upx) / 2);
+              }
             }
           }
         }
