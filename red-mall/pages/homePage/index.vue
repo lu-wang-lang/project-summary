@@ -79,7 +79,19 @@
               </view>
             </view>
             <view class="other-container">
-              <view class="left out-line"></view>
+              <view class="left out-line">
+                <view class="title">肉食联盟</view>
+                <view class="category">
+                  <text class="meat-item">猪肉</text>
+                  <text class="meat-item">牛肉</text>
+                  <text class="meat-item">羊肉...</text>
+                </view>
+                <view class="price">
+                  <text>都是最</text><text style="color: #ec0d0d">低价</text>
+                </view>
+                <image class="meat-img" :src="meatImg"></image>
+                <view class="go-button">GO>></view>
+              </view>
               <view class="right">
                 <view class="right-top out-line"></view>
                 <view class="right-bottom out-line"></view>
@@ -239,6 +251,7 @@ export default {
           saleCount: 1466,
         },
       ],
+      meatImg: require("../../assets/images/meat.gif"),
     };
   },
   methods: {
@@ -493,6 +506,47 @@ export default {
             .left {
               width: calc((100% - 18upx) / 2);
               height: 100%;
+              position: relative;
+              .title {
+                font-size: $font-lg;
+                font-weight: bold;
+                color: #101010;
+                margin-bottom: 24upx;
+              }
+              .category{
+                font-size: 26upx;
+                font-weight: bold;
+                color: #101010;
+                margin-bottom: 20upx;
+                .meat-item{
+                  margin-right: 10upx;
+                }
+              }
+              .price{
+                font-size: 26upx;
+                font-weight: bold;
+                color: #101010;
+              }
+              .meat-img{
+                width: 100%;
+                height: 218upx;
+                border-radius: 16upx;
+                margin-top: 24upx;
+              }
+              .go-button{
+                width: 110upx;
+                height: 40upx;
+                position: absolute;
+                right:10%;
+                top:140upx;
+                background:#FBD841;
+                color:white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: $font-base;
+                border-radius: 20upx;
+              }
             }
             .right {
               width: calc((100% - 18upx) / 2);
