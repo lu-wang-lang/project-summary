@@ -17,41 +17,49 @@
       </view>
     </view>
     <view class="background-bg"></view>
-    <swiper
-      class="swiper-container"
-      v-if="bannerList.length"
-      :indicator-dots="indicatorDots"
-      indicator-color="#C8C5E1"
-      indicator-active-color="#fff"
-      :autoplay="autoplay"
-      :interval="interval"
-      :duration="duration"
-      :circular="true"
-    >
-      <swiper-item
-        v-for="(item, index) in bannerList"
-        :key="index"
-        @click="goBannerDetail(item, true)"
-        class="swiper-item"
+    <view class="main-wrapper">
+      <swiper
+        class="swiper-container"
+        v-if="bannerList.length"
+        :indicator-dots="indicatorDots"
+        indicator-color="#C8C5E1"
+        indicator-active-color="#fff"
+        :autoplay="autoplay"
+        :interval="interval"
+        :duration="duration"
+        :circular="true"
       >
-        <image class="swiper-img" :src="item.image"></image>
-      </swiper-item>
-    </swiper>
-    <swiper class="module-block-container" v-if="blockList.length">
-      <swiper-item v-for="(blocks, idx) in blockList" :key="idx">
-        <view class="module-block">
-          <view class="block-item" v-for="(item, index) of blocks" :key="index">
-            <view class="img-container">
-              <image class="block-img" :src="item.image"></image>
+        <swiper-item
+          v-for="(item, index) in bannerList"
+          :key="index"
+          @click="goBannerDetail(item, true)"
+          class="swiper-item"
+        >
+          <image class="swiper-img" :src="item.image"></image>
+        </swiper-item>
+      </swiper>
+      <swiper class="module-block-container" v-if="blockList.length">
+        <swiper-item v-for="(blocks, idx) in blockList" :key="idx">
+          <view class="module-block">
+            <view
+              class="block-item"
+              v-for="(item, index) of blocks"
+              :key="index"
+            >
+              <view class="img-container">
+                <image class="block-img" :src="item.image"></image>
+              </view>
+              <view>{{ item.title }}</view>
             </view>
-            <view>{{ item.title }}</view>
           </view>
-        </view>
-      </swiper-item>
-    </swiper>
-    <view class="goods-container">
-      <view class="container">
-        <view class="good-item-container" v-for="(good, index) of goodsList" :key="index">
+        </swiper-item>
+      </swiper>
+      <view class="goods-container">
+        <view
+          class="good-item-container"
+          v-for="(good, index) of goodsList"
+          :key="index"
+        >
           <view v-if="good.isNormal" class="good-item out-line">
             <image class="good-img" :src="good.image"></image>
             <view class="title" v-html="good.title"></view>
@@ -94,27 +102,34 @@
               </view>
               <view class="right">
                 <view class="right-top out-line">
-                  <view class="top"><text>家常蔬菜</text><text>惊爆价</text></view>
+                  <view class="top"
+                    ><text>家常蔬菜</text><text>惊爆价</text></view
+                  >
                   <view class="middle">
                     <view class="middle-left">
                       <view class="price">
-                        <text>低至<text>
+                        <text>低至</text>
                         <text class="price-text">1.99</text>
                         <text>元起</text>
                       </view>
                       <view class="go-button">GO>></view>
                     </view>
                     <view class="middle-right">
-                      <image class="vegetables-img" :src="vegetablesImg"></image>
+                      <image
+                        class="vegetables-img"
+                        :src="vegetablesImg"
+                      ></image>
                     </view>
                   </view>
                 </view>
                 <view class="right-bottom out-line">
-                  <view class="top"><text>必备水果</text><text>惊爆价</text></view>
+                  <view class="top"
+                    ><text>必备水果</text><text>惊爆价</text></view
+                  >
                   <view class="middle">
                     <view class="middle-left">
                       <view class="price">
-                        <text>低至<text>
+                        <text>低至</text>
                         <text class="price-text">0.99</text>
                         <text>元起</text>
                       </view>
@@ -130,13 +145,13 @@
           </view>
         </view>
       </view>
-    </view>
-    <view class="not-sign-container">
-      <view class="sign-left">
-        <image class="close-img" :src="closeImg"></image>
-        <text>登录抢爆款商品</text>
+      <view class="not-sign-container">
+        <view class="sign-left">
+          <image class="close-img" :src="closeImg"></image>
+          <text>登录抢爆款商品</text>
+        </view>
+        <view class="sign-right">立即登录</view>
       </view>
-      <view class="sign-right">立即登录</view>
     </view>
   </view>
 </template>
@@ -144,7 +159,7 @@
 <script>
 export default {
   name: "HomePage",
-  data() {
+  data () {
     return {
       leftTopImg: require("../../assets/images/eat-good.png"),
       leftBottomImg: require("../../assets/images/eat-good-long.png"),
@@ -295,17 +310,17 @@ export default {
     };
   },
   methods: {
-    handleSearch() {
+    handleSearch () {
       uni.navigateTo({
         url: `/pages/index/index`,
       });
     },
-    goBannerDetail() {
+    goBannerDetail () {
       uni.navigateTo({
         url: `/pages/index/index`,
       });
     },
-    addCart(good) {},
+    addCart (good) { },
   },
 };
 </script>
@@ -317,6 +332,8 @@ export default {
     width: 100%;
     padding: 60upx 0upx 20upx;
     background: rgba(250, 79, 81, 1);
+    position: fixed;
+    z-index: 99;
     .title-image-container {
       width: 100%;
       height: 152upx;
@@ -389,55 +406,55 @@ export default {
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
   }
-  .swiper-container {
-    width: 704upx;
-    height: 320upx;
-    border-radius: 16upx;
-    margin: 0upx auto;
-    overflow: hidden;
-    .swiper-item {
+  .main-wrapper {
+    padding-top: 320upx;
+    .swiper-container {
+      width: 704upx;
+      height: 320upx;
       border-radius: 16upx;
-      .swiper-img {
-        width: 100%;
-        height: 100%;
+      margin: 0upx auto;
+      overflow: hidden;
+      .swiper-item {
         border-radius: 16upx;
+        .swiper-img {
+          width: 100%;
+          height: 100%;
+          border-radius: 16upx;
+        }
       }
     }
-  }
-  .module-block-container {
-    width: 100%;
-    height: 426upx;
-    padding: 30upx 26upx;
-    box-sizing: border-box;
-    .module-block {
-      widows: 100%;
-      height: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      .block-item {
-        width: calc((100% - 144upx) / 4);
-        height: 162upx;
+    .module-block-container {
+      width: 100%;
+      height: 426upx;
+      padding: 30upx 26upx;
+      box-sizing: border-box;
+      .module-block {
+        widows: 100%;
+        height: 100%;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        .img-container {
-          width: 114upx;
-          height: 114upx;
-          border-radius: 50%;
-          overflow: hidden;
-          margin-bottom: 18upx;
-          .block-img {
-            width: 100%;
-            height: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .block-item {
+          width: calc((100% - 144upx) / 4);
+          height: 162upx;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .img-container {
+            width: 114upx;
+            height: 114upx;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 18upx;
+            .block-img {
+              width: 100%;
+              height: 100%;
+            }
           }
         }
       }
     }
-  }
-  .goods-container {
-    width: 100%;
-    .container {
+    .goods-container {
       width: 100%;
       padding: 20upx;
       padding-top: 0upx;
@@ -608,11 +625,11 @@ export default {
                   justify-content: space-between;
                   align-items: center;
                 }
-                .middle{
+                .middle {
                   display: flex;
                   justify-content: space-between;
-                  .middle-left{
-                    flex:1;
+                  .middle-left {
+                    flex: 1;
                     .price {
                       font-size: 26upx;
                       font-weight: bold;
@@ -637,12 +654,12 @@ export default {
                       border-radius: 20upx;
                     }
                   }
-                  .middle-right{
+                  .middle-right {
                     width: 140upx;
                     height: 110upx;
                     border-radius: 8upx;
                     overflow: hidden;
-                    .vegetables-img{
+                    .vegetables-img {
                       width: 100%;
                       height: 100%;
                     }
@@ -657,40 +674,40 @@ export default {
         margin-bottom: 40upx;
       }
     }
-  }
-  .not-sign-container{
-    width: 700upx;
-    height: 70upx;
-    margin: 0upx auto;
-    border-radius: 35upx;
-    background: rgba(16,16,16,0.7);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding:0upx 24upx;
-    box-sizing: border-box;
-    margin-bottom: 40upx;
-    .sign-left{
-      color:white;
-      font-size: $font-base;
+    .not-sign-container {
+      width: 700upx;
+      height: 70upx;
+      margin: 0upx auto;
+      border-radius: 35upx;
+      background: rgba(16, 16, 16, 0.7);
       display: flex;
       align-items: center;
-      .close-img{
-        width: 46upx;
-        height: 46upx;
-        margin-right:16upx;
+      justify-content: space-between;
+      padding: 0upx 24upx;
+      box-sizing: border-box;
+      margin-bottom: 40upx;
+      .sign-left {
+        color: white;
+        font-size: $font-base;
+        display: flex;
+        align-items: center;
+        .close-img {
+          width: 46upx;
+          height: 46upx;
+          margin-right: 16upx;
+        }
       }
-    }
-    .sign-right{
-      width: 170upx;
-      height: 44upx;
-      border-radius: 22upx;
-      color:white;
-      background:#EC0D0D;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: $font-sm;
+      .sign-right {
+        width: 170upx;
+        height: 44upx;
+        border-radius: 22upx;
+        color: white;
+        background: #ec0d0d;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: $font-sm;
+      }
     }
   }
 }
