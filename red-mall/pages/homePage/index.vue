@@ -327,13 +327,15 @@ export default {
 
 <style lang="scss">
 .home-page-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   position: relative;
   .top-container {
     width: 100%;
+    height: 240upx;
     padding: 60upx 0upx 20upx;
     background: rgba(250, 79, 81, 1);
-    position: fixed;
-    z-index: 99;
     .title-image-container {
       width: 100%;
       height: 152upx;
@@ -407,7 +409,8 @@ export default {
     border-bottom-right-radius: 50%;
   }
   .main-wrapper {
-    padding-top: 320upx;
+    flex: 1;
+    overflow-y: auto;
     .swiper-container {
       width: 704upx;
       height: 320upx;
@@ -428,6 +431,7 @@ export default {
       height: 426upx;
       padding: 30upx 26upx;
       box-sizing: border-box;
+      background: white;
       .module-block {
         widows: 100%;
         height: 100%;
@@ -459,6 +463,7 @@ export default {
       padding: 20upx;
       padding-top: 0upx;
       box-sizing: border-box;
+      background: white;
       .good-item-container {
         width: 100%;
         .good-item {
