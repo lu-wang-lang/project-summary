@@ -41,9 +41,17 @@
       <swiper class="module-block-container" v-if="blockList.length">
         <swiper-item v-for="(blocks, idx) in blockList" :key="idx">
           <view class="module-block">
-            <view class="block-item" v-for="(item, index) of blocks" :key="index" >
+            <view
+              class="block-item"
+              v-for="(item, index) of blocks"
+              :key="index"
+            >
               <view class="img-container">
-                <image class="block-img" :src="item.image" @click="goBlock"></image>
+                <image
+                  class="block-img"
+                  :src="item.image"
+                  @click="goBlock"
+                ></image>
               </view>
               <view>{{ item.title }}</view>
             </view>
@@ -51,9 +59,17 @@
         </swiper-item>
       </swiper>
       <view class="goods-container">
-        <view class="good-item-container" v-for="(good, index) of goodsList" :key="index">
+        <view
+          class="good-item-container"
+          v-for="(good, index) of goodsList"
+          :key="index"
+        >
           <view v-if="good.isNormal" class="good-item out-line">
-            <image class="good-img" :src="good.image" @click="goDetail(index)"></image>
+            <image
+              class="good-img"
+              :src="good.image"
+              @click="goDetail(index)"
+            ></image>
             <view class="title" v-html="good.title"></view>
             <view class="time">提货时间：{{ good.time }}</view>
             <view class="bottom">
@@ -94,7 +110,9 @@
               </view>
               <view class="right">
                 <view class="right-top out-line">
-                  <view class="top"><text>家常蔬菜</text><text>惊爆价</text></view>
+                  <view class="top"
+                    ><text>家常蔬菜</text><text>惊爆价</text></view
+                  >
                   <view class="middle">
                     <view class="middle-left">
                       <view class="price">
@@ -105,12 +123,17 @@
                       <view class="go-button">GO>></view>
                     </view>
                     <view class="middle-right">
-                      <image class="vegetables-img" :src="vegetablesImg"></image>
+                      <image
+                        class="vegetables-img"
+                        :src="vegetablesImg"
+                      ></image>
                     </view>
                   </view>
                 </view>
                 <view class="right-bottom out-line">
-                  <view class="top"><text>必备水果</text><text>惊爆价</text></view>
+                  <view class="top"
+                    ><text>必备水果</text><text>惊爆价</text></view
+                  >
                   <view class="middle">
                     <view class="middle-left">
                       <view class="price">
@@ -144,7 +167,7 @@
 <script>
 export default {
   name: "HomePage",
-  data() {
+  data () {
     return {
       leftTopImg: require("../../assets/images/eat-good.png"),
       leftBottomImg: require("../../assets/images/eat-good-long.png"),
@@ -295,24 +318,24 @@ export default {
     };
   },
   methods: {
-    handleSearch() {
+    handleSearch () {
       uni.navigateTo({
         url: `/pages/index/index`,
       });
     },
-    addCart(good) {},
-    goLogin() {
+    addCart (good) { },
+    goLogin () {
       uni.navigateTo({
         url: `/pages/login/index`,
       });
     },
-    goDetail(index){
+    goDetail (index) {
       uni.navigateTo({
         url: `/pages/category/detail`,
       });
     },
-    goBlock(){
-      uni.navigateTo({
+    goBlock () {
+      uni.switchTab({
         url: `/pages/category/index`,
       });
     }
