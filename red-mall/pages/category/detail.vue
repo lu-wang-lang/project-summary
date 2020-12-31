@@ -1,6 +1,19 @@
 <template>
   <view class="good-detail-container">
-    <view class="main-container"> </view>
+    <view class="main-container">
+      <view class="tab-container">
+        <view
+          class="tab-item"
+          v-for="(tab, index) of tabs"
+          :key="index"
+          :class="selectedTabIndex === index ? 'tab active' : 'tab'"
+          @click="handleTab(index)"
+        >
+          <view>{{ tab }}</view>
+          <view class="line"></view>
+        </view>
+      </view>
+    </view>
     <view class="footer">
       <view class="svg-container">
         <view class="share">
@@ -27,6 +40,13 @@ export default {
     return {
       shareImg: require("../../assets/images/md-launch.svg"),
       cartImg: require("../../assets/images/bottom-cart.svg"),
+      tabs: ["基本信息", "图文详情"],
+      selectedTabIndex: 0,
+    }
+  },
+  methods: {
+    handleTab (index) {
+      this.selectedTabIndex = this.selectedTabIndex == index ? this.selectedTabIndex : index;
     }
   }
 }
@@ -42,6 +62,37 @@ export default {
     width: 100%;
     flex: 1;
     overflow-y: auto;
+    .tab-container {
+      width: 100%;
+      height: 80upx;
+      display: flex;
+      border-bottom: 1px solid #eee;
+      .tab {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: $font-base;
+        color: #101010;
+        margin-top: 20upx;
+        transition: all 0.3s;
+        .line {
+          width: 68upx;
+          height: 6upx;
+          background: transparent;
+          margin-top: 10upx;
+          transition: all 0.3s;
+        }
+      }
+      .active {
+        color: $theme-color;
+        transition: all 0.3s;
+        .line {
+          background: $theme-color;
+          transition: all 0.3s;
+        }
+      }
+    }
   }
   .footer {
     width: 100%;
