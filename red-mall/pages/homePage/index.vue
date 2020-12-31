@@ -32,7 +32,7 @@
         <swiper-item
           v-for="(item, index) in bannerList"
           :key="index"
-          @click="goBannerDetail(item, true)"
+          @click="goDetail(item)"
           class="swiper-item"
         >
           <image class="swiper-img" :src="item.image"></image>
@@ -53,7 +53,7 @@
       <view class="goods-container">
         <view class="good-item-container" v-for="(good, index) of goodsList" :key="index">
           <view v-if="good.isNormal" class="good-item out-line">
-            <image class="good-img" :src="good.image"></image>
+            <image class="good-img" :src="good.image" @click="goDetail(index)"></image>
             <view class="title" v-html="good.title"></view>
             <view class="time">提货时间：{{ good.time }}</view>
             <view class="bottom">
@@ -300,15 +300,15 @@ export default {
         url: `/pages/index/index`,
       });
     },
-    goBannerDetail() {
-      uni.navigateTo({
-        url: `/pages/index/index`,
-      });
-    },
     addCart(good) {},
     goLogin() {
       uni.navigateTo({
         url: `/pages/login/index`,
+      });
+    },
+    goDetail(index){
+      uni.navigateTo({
+        url: `/pages/category/detail`,
       });
     },
   },
