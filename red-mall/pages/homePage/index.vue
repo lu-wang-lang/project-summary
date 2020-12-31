@@ -150,7 +150,7 @@
           <image class="close-img" :src="closeImg"></image>
           <text>登录抢爆款商品</text>
         </view>
-        <view class="sign-right">立即登录</view>
+        <view class="sign-right" @click="goLogin">立即登录</view>
       </view>
     </view>
   </view>
@@ -321,6 +321,11 @@ export default {
       });
     },
     addCart (good) { },
+    goLogin(){
+      uni.navigateTo({
+        url: `/pages/login/index`,
+      });
+    },
   },
 };
 </script>
