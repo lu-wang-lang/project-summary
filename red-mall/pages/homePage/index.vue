@@ -340,7 +340,7 @@ export default {
     width: 100%;
     height: 240upx;
     padding: 60upx 0upx 20upx;
-    background: rgba(250, 79, 81, 1);
+    background: $theme-color;
     .title-image-container {
       width: 100%;
       height: 152upx;
@@ -407,7 +407,7 @@ export default {
     position: absolute;
     width: 100%;
     height: 416upx;
-    background: rgba(250, 79, 81, 1);
+    background: $theme-color;
     top: 148upx;
     z-index: -99;
     border-bottom-left-radius: 50%;
@@ -495,7 +495,7 @@ export default {
             align-items: flex-end;
             position: relative;
             .price {
-              color: #ec0d0d;
+              color: $theme-color;
               font-size: $font-sm;
               margin-right: 40upx;
               .price-text {
@@ -517,7 +517,7 @@ export default {
               justify-content: center;
               align-items: center;
               color: white;
-              background: #ec0d0d;
+              background: $theme-color;
               font-size: $font-base;
               border-radius: 30upx;
             }
@@ -647,7 +647,7 @@ export default {
                       margin-bottom: 24upx;
                       .price-text {
                         font-size: $font-lg;
-                        color: #ec0d0d;
+                        color: $theme-color;
                       }
                     }
                     .go-button {
@@ -712,7 +712,7 @@ export default {
         height: 44upx;
         border-radius: 22upx;
         color: white;
-        background: #ec0d0d;
+        background:$theme-color;
         display: flex;
         justify-content: center;
         align-items: center;
