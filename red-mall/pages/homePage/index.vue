@@ -41,7 +41,7 @@
       <swiper class="module-block-container" v-if="blockList.length">
         <swiper-item v-for="(blocks, idx) in blockList" :key="idx">
           <view class="module-block">
-            <view class="block-item" v-for="(item, index) of blocks" :key="index">
+            <view class="block-item" v-for="(item, index) of blocks" :key="index" @click="goBlock">
               <view class="img-container">
                 <image class="block-img" :src="item.image"></image>
               </view>
@@ -311,6 +311,11 @@ export default {
         url: `/pages/category/detail`,
       });
     },
+    goBlock(){
+      uni.navigateTo({
+        url: `/pages/category/index`,
+      });
+    }
   },
 };
 </script>
