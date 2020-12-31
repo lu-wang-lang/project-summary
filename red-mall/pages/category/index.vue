@@ -30,7 +30,7 @@
             v-for="(good, index) of selectedGoods"
             :key="index"
           >
-            <image class="good-img" :src="good.image"></image>
+            <image class="good-img" :src="good.image" @click="goDetail(index)"></image>
             <view class="title" v-html="good.title"></view>
             <view class="time">提货时间：{{ good.time }}</view>
             <view class="bottom">
@@ -205,6 +205,11 @@ export default {
         this.selectedIndex % 2 === 0 ? this.goodsList[0] : this.goodsList[1];
     },
     addCart(good) {},
+    goDetail(index){
+      uni.navigateTo({
+        url: `/pages/category/detail`,
+      });
+    },
   },
   mounted() {
     this.selectedGoods = this.goodsList[0];
@@ -286,8 +291,8 @@ export default {
         margin-bottom: 30upx;
         .good-item {
           width: 90%;
-          margin:0upx auto;
-          margin-bottom: 30upx;
+          margin:10upx auto;
+          margin-bottom: 20upx;
           .good-img {
             width: 100%;
             height: 236upx;
