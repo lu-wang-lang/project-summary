@@ -22,20 +22,87 @@
       </view>
       <scroll-view :scroll-y="true" class="main-content" @scroll="handleScroll">
         <view class="good-img-container">
-          <image :src="goodsImg" class="good-img"></image>
+          <image :src="goods.goodsImg" class="good-img"></image>
           <view class="price-container">
             <view class="price">
               <text>￥</text>
-              <text class="price-text">28.8</text>
+              <text class="price-text">{{ goods.goodPrice }}</text>
             </view>
             <view class="time-container">
               <view class="time-desc">距离本场结束还剩</view>
-              <view class="time-btn">01:41:01</view>
+              <view class="time-btn">{{ goods.overTime }}</view>
             </view>
           </view>
           <view class="good-title-container">
-            <view class="top"></view>
-            <view class="bottom"></view>
+            <view class="top" v-html="goods.title"></view>
+            <view class="bottom">
+              <view class="left">提货时间：{{ goods.getTime }}</view>
+              <view class="right">
+                <uni-number-box :value="goods.count" @change="change" />
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="good-detail-container">
+          <view class="title-container">
+            <text class="dash-line">---------</text>
+            <text class="title">商品详情</text>
+            <text class="dash-line">---------</text>
+          </view>
+          <view class="content-desc">
+            <view class="row">
+              <view class="label">商品名称</view>
+              <view class="content" v-html="goods.realName"></view>
+            </view>
+            <view class="row">
+              <view class="label">商品编号</view>
+              <view class="content">{{ goods.goodNumber }}</view>
+            </view>
+            <view class="row">
+              <view class="label">上架时间</view>
+              <view class="content">{{ goods.saleTime }}</view>
+            </view>
+            <view class="row">
+              <view class="label">类型</view>
+              <view class="content">{{ goods.category }}</view>
+            </view>
+          </view>
+        </view>
+        <view class="good-pic-container">
+          <view class="title-container">
+            <text class="dash-line">---------</text>
+            <text class="title">图文详情</text>
+            <text class="dash-line">---------</text>
+          </view>
+          <view class="pic-content">
+            <view class="word-desc">{{ goods.picWord }}</view>
+            <view class="pic-wrapper">
+              <image
+                v-for="(image, index) of goods.picList"
+                :key="index"
+                :src="image"
+                class="pic-img"
+              ></image>
+            </view>
+          </view>
+        </view>
+        <view class="play-container">
+          <view class="title-container"> 吃喝玩乐购物指南 </view>
+          <view class="time-line-container">
+            <view
+              class="item-container"
+              v-for="(play, index) of playList"
+              :key="index"
+            >
+              <view class="left">
+                <view class="roune"></view>
+                <view class="line"></view>
+              </view>
+              <view class="right">
+                <view class="title">{{ play.title }}</view>
+                <view class="real-content">{{ play.desc }}</view>
+              </view>
+            </view>
           </view>
         </view>
       </scroll-view>
@@ -60,8 +127,10 @@
 </template>
 
 <script>
+import uniNumberBox from '../../components/uni-number-box'
 export default {
   name: 'GoodDetail',
+  components: { uniNumberBox },
   data () {
     return {
       shareImg: require("../../assets/images/md-launch.svg"),
@@ -69,7 +138,41 @@ export default {
       tabs: ["基本信息", "图文详情"],
       selectedTabIndex: 0,
       isShowTab: false,
-      goodsImg: require('../../assets/images/good.png')
+      goods: {
+        goodsImg: require('../../assets/images/good.png'),
+        getTime: '08月13日',
+        goodPrice: '28.8',
+        title: '卤将军 麻辣鸭掌 10/袋 约280g/袋',
+        realName: '卤将军 麻辣鸭掌',
+        overTime: '01:41:01',
+        count: 1,
+        goodNumber: 210009,
+        saleTime: '2020-12-08',
+        category: '零食',
+        picWord: '色泽诱人.富有嚼劲！大家快来买啊！骨酥肉香滋味鲜爽20多味香料的卤汤，香气饱满、浓郁，外皮绵软，肌肉脆嫩，卤汁浸入骨头之中，食后美感久久不去。',
+        picList: [
+          require("../../assets/images/pic1.png"),
+          require("../../assets/images/pic2.png"),
+          require("../../assets/images/pic3.png"),
+          require("../../assets/images/pic4.png")
+        ]
+      },
+      playList: [{
+        title: '在线下单',
+        desc: '每天可购买商品时间：00：00-23：00'
+      }, {
+        title: '物流配送',
+        desc: '每天16：00之前，物流会将您昨日购买的商品配送到您购买选择的自提门店'
+      }, {
+        title: '门店自提',
+        desc: '每天可购买商品时间：00：00-23：00'
+      }, {
+        title: '售后无忧',
+        desc: '每天可购买商品时间：00：00-23：00'
+      }, {
+        title: '吃喝玩乐全国热线',
+        desc: '如果你遇到问题，请致电吃喝玩乐帮忙热线！电话：40088888'
+      }]
     }
   },
   methods: {
@@ -78,6 +181,9 @@ export default {
     },
     handleScroll (e) {
       this.isShowTab = e.detail.scrollTop > 10
+    },
+    change (val) {
+
     },
   }
 }
@@ -93,7 +199,7 @@ export default {
     width: 100%;
     flex: 1;
     overflow-y: auto;
-    background: #bbb;
+    background: rgba(187, 187, 187, 0.22);
     .tab-container {
       width: 100%;
       height: 80upx;
@@ -102,6 +208,8 @@ export default {
       opacity: 0;
       transition: all 0.3s;
       position: fixed;
+      background: white;
+      z-index: 99;
       .tab {
         width: 50%;
         display: flex;
@@ -181,6 +289,168 @@ export default {
         .good-title-container {
           width: 100%;
           height: 184upx;
+          padding: 26upx;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          .top {
+            color: #101010;
+            font-size: $font-lg;
+            font-weight: bold;
+            margin-bottom: 32upx;
+          }
+          .bottom {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .left {
+              font-size: 26upx;
+              color: #101010;
+            }
+          }
+        }
+      }
+      .good-detail-container {
+        width: 100%;
+        height: 384upx;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 26upx;
+        padding-top: 10upx;
+        box-sizing: border-box;
+        background: white;
+        margin-top: 24upx;
+        .title-container {
+          width: 100%;
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: $font-lg;
+          font-weight: bold;
+          color: #101010;
+          .dash-line {
+            font-weight: normal;
+            color: #ccc;
+          }
+          .title {
+            margin: 0upx 20upx;
+          }
+        }
+        .content-desc {
+          width: 100%;
+          height: 264upx;
+          background: rgba(250, 79, 81, 0.22);
+          padding: 22upx;
+          box-sizing: border-box;
+          border-radius: 16upx;
+          .row {
+            display: flex;
+            align-items: center;
+            font-size: $font-base;
+            color: #101010;
+            .label {
+              width: 160upx;
+              text-align: left;
+            }
+            .content {
+              flex: 1;
+            }
+          }
+          .row + .row {
+            margin-top: 22upx;
+          }
+        }
+      }
+      .good-pic-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-top: 10upx;
+        box-sizing: border-box;
+        background: white;
+        .title-container {
+          width: 100%;
+          height: 100upx;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: $font-lg;
+          font-weight: bold;
+          color: #101010;
+          .dash-line {
+            font-weight: normal;
+            color: #ccc;
+          }
+          .title {
+            margin: 0upx 20upx;
+          }
+        }
+        .pic-content {
+          width: 100%;
+          .word-desc {
+            padding: 0upx 40upx;
+            font-size: $font-base;
+            color: rgba(16, 16, 16, 0.78);
+            margin-bottom: 26upx;
+          }
+          .pic-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            .pic-img {
+              width: 100%;
+              height: 1012upx;
+            }
+            .pic-img:last-child {
+              height: 514upx;
+            }
+          }
+        }
+      }
+      .play-container {
+        background: white;
+        margin-top: 24upx;
+        padding-bottom: 20upx;
+        width: 100%;
+        .title-container {
+          width: 100%;
+          height: 100upx;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: $font-lg;
+          font-weight: bold;
+          color: #101010;
+        }
+        .time-line-container {
+          width: 100%;
+          padding: 0upx 26upx;
+          box-sizing: border-box;
+          .item-container {
+            display: flex;
+            margin-bottom: 20upx;
+            .left {
+              width: 50upx;
+              height: 100%;
+            }
+            .right {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              color: #101010;
+              font-size: $font-base;
+              .title {
+                margin-bottom: 16upx;
+                font-weight: bold;
+              }
+              .real-content {
+                line-height: 1.5;
+              }
+            }
+          }
         }
       }
     }
