@@ -449,11 +449,11 @@ export default {
                 width: 24upx;
                 height: 24upx;
                 border-radius: 50%;
-                border: 1px solid $theme-color;
+                border: 2upx solid $theme-color;
                 margin-top: 4upx;
               }
               .line {
-                width: 1px;
+                width: 2upx;
                 height: 100upx;
                 margin-top: 2upx;
                 background: rgba(187, 187, 187, 0.48);
@@ -481,7 +481,7 @@ export default {
   .footer {
     width: 100%;
     height: 100upx;
-    border: 1px solid #eee;
+    border: 2upx solid #eee;
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -35,7 +35,46 @@
         </view>
       </view>
     </view>
-    <view class="address-detail-container"></view>
+    <view class="address-detail-container">
+      <view class="real-address">
+        <view class="left">我的当前自提店</view>
+        <view class="right">切换自提店</view>
+        <view class="triangle"></view>
+      </view>
+      <view class="main-address-container">
+        <view class="name">{{ shop.name }}</view>
+        <view class="evaluate-container">
+          <view class="evaluate-item">
+            <image :src="comerImg" class="evaluate-img"></image>
+            <text>{{ shop.comer }}人来过</text>
+          </view>
+          <view class="evaluate-item">
+            <image :src="supportImg" class="evaluate-img"></image>
+            <text>{{ shop.support }}点赞</text>
+          </view>
+        </view>
+        <view class="address">{{ shop.address }}</view>
+        <view class="btn-container">
+          <view
+            :class="selectedTab === 'phone' ? 'phone btn active' : 'phone btn'"
+            @click="handleTab('phone')"
+            >电话联系门店</view
+          >
+          <view
+            :class="selectedTab === 'map' ? 'btn active' : 'btn'"
+            @click="handleTab('map')"
+            >导航去门店</view
+          >
+        </view>
+        <view class="tips-container">
+          <image :src="vertifyImg" class="vertify-img"></image>
+          <view class="main-text"
+            >如您购买的商品有任何问题，请直接与购买门店
+            联系，门店会为您处理，让您售后无忧</view
+          >
+        </view>
+      </view>
+    </view>
     <view class="go-shopping-btn" @click="goShopping">去购物</view>
   </view>
 </template>
@@ -63,7 +102,17 @@ export default {
       }, {
         title: '已提货',
         image: require("../../assets/images/customer-service.svg")
-      }]
+      }],
+      shop: {
+        name: '岳麓区梅溪湖街道东方红小区快乐惠店',
+        comer: '2.8万',
+        support: '17.2万',
+        address: '门店地址：湖南省长沙市岳麓区梅西湖街道建顺源9栋2单元',
+      },
+      comerImg: require("../../assets/images/users.svg"),
+      supportImg: require("../../assets/images/thumbs-up.svg"),
+      selectedTab: 'phone',
+      vertifyImg: require("../../assets/images/verified-user.svg"),
     }
   },
   methods: {
@@ -71,7 +120,10 @@ export default {
       uni.switchTab({
         url: `/pages/homePage/index`,
       });
-    }
+    },
+    handleTab (type) {
+      this.selectedTab = type
+    },
   }
 }
 </script>
@@ -115,7 +167,7 @@ export default {
             width: 200upx;
             height: 54upx;
             border-radius: 27upx;
-            border: 1px solid white;
+            border: 2upx solid white;
             display: flex;
             align-items: center;
             .round {
@@ -219,7 +271,7 @@ export default {
         .top {
           width: 96upx;
           height: 96upx;
-          border: 1px solid $theme-color;
+          border: 2upx solid $theme-color;
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -232,6 +284,119 @@ export default {
         }
         .bottom {
           text-align: center;
+        }
+      }
+    }
+  }
+  .address-detail-container {
+    width: calc(100% - 28upx);
+    margin: 14upx 14upx 0upx;
+    border-top-left-radius: 16upx;
+    border-top-right-radius: 16upx;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: $card-box-shadow;
+    .real-address {
+      width: 100%;
+      height: 76upx;
+      background-color: rgba(230, 212, 140, 1);
+      padding: 0upx 36upx;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: $font-base;
+      box-sizing: border-box;
+      position: relative;
+      .left {
+        color: rgb(145, 120, 16);
+        font-weight: bold;
+      }
+      .right {
+        color: rgba(16, 16, 16, 0.82);
+      }
+      .triangle {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 18upx solid transparent;
+        border-right: 18upx solid transparent;
+        border-top: 18upx solid rgba(230, 212, 140, 1);
+        top: 76upx;
+        left: 50%;
+        z-index: 99;
+      }
+    }
+    .main-address-container {
+      padding: 0upx 26upx;
+      box-sizing: border-box;
+      .name {
+        color: rgba(16, 16, 16, 1);
+        font-size: $font-base;
+        font-weight: bold;
+        margin-top: 40upx;
+        margin-bottom: 28upx;
+      }
+      .evaluate-container {
+        display: flex;
+        align-items: center;
+        .evaluate-item {
+          width: 50%;
+          display: flex;
+          align-items: center;
+          color: rgba(16, 16, 16, 1);
+          font-size: $font-sm;
+          margin-bottom: 14upx;
+          .evaluate-img {
+            width: 48upx;
+            height: 48upx;
+            margin-right: 12upx;
+          }
+        }
+      }
+      .address {
+        color: rgba(16, 16, 16, 1);
+        font-size: $font-base;
+        margin-bottom: 34upx;
+        line-height: 1.5;
+      }
+      .btn-container {
+        display: flex;
+        padding: 0upx 20upx;
+        box-sizing: border-box;
+        width: 100%;
+        margin-bottom: 26upx;
+        .btn {
+          width: 272upx;
+          height: 88upx;
+          border-radius: 10upx;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: $font-base;
+          color: rgba(16, 16, 16, 0.59);
+          border: 4upx solid rgba(16, 16, 16, 0.59);
+        }
+        .phone {
+          margin-right: 112upx;
+        }
+        .active {
+          color: $theme-color;
+          border: 4upx solid $theme-color;
+        }
+      }
+      .tips-container {
+        display: flex;
+        padding: 26upx;
+        font-size: 26upx;
+        color: rgba(16, 16, 16, 1);
+        line-height: 1.5;
+        background: rgba(250, 79, 81, 0.22);
+        border-radius: 16upx;
+        margin-bottom: 60upx;
+        .vertify-img {
+          width: 48upx;
+          height: 48upx;
+          margin-right: 20upx;
         }
       }
     }
