@@ -1,7 +1,14 @@
 <template>
   <view class="good-detail-container">
     <view class="main-container">
-      <view class="tab-container">
+      <view
+        class="tab-container"
+        :style="
+          isShowTab
+            ? 'opacity:1;transition: all 0.3s;'
+            : 'opacity:0;transition: all 0.3s;'
+        "
+      >
         <view
           class="tab-item"
           v-for="(tab, index) of tabs"
@@ -13,6 +20,25 @@
           <view class="line"></view>
         </view>
       </view>
+      <scroll-view :scroll-y="true" class="main-content" @scroll="handleScroll">
+        <view class="good-img-container">
+          <image :src="goodsImg" class="good-img"></image>
+          <view class="price-container">
+            <view class="price">
+              <text>￥</text>
+              <text class="price-text">28.8</text>
+            </view>
+            <view class="time-container">
+              <view class="time-desc">距离本场结束还剩</view>
+              <view class="time-btn">01:41:01</view>
+            </view>
+          </view>
+          <view class="good-title-container">
+            <view class="top"></view>
+            <view class="bottom"></view>
+          </view>
+        </view>
+      </scroll-view>
     </view>
     <view class="footer">
       <view class="svg-container">
@@ -42,12 +68,17 @@ export default {
       cartImg: require("../../assets/images/bottom-cart.svg"),
       tabs: ["基本信息", "图文详情"],
       selectedTabIndex: 0,
+      isShowTab: false,
+      goodsImg: require('../../assets/images/good.png')
     }
   },
   methods: {
     handleTab (index) {
       this.selectedTabIndex = this.selectedTabIndex == index ? this.selectedTabIndex : index;
-    }
+    },
+    handleScroll (e) {
+      this.isShowTab = e.detail.scrollTop > 10
+    },
   }
 }
 </script>
@@ -62,11 +93,15 @@ export default {
     width: 100%;
     flex: 1;
     overflow-y: auto;
+    background: #bbb;
     .tab-container {
       width: 100%;
       height: 80upx;
       display: flex;
       border-bottom: 1px solid #eee;
+      opacity: 0;
+      transition: all 0.3s;
+      position: fixed;
       .tab {
         width: 50%;
         display: flex;
@@ -90,6 +125,62 @@ export default {
         .line {
           background: $theme-color;
           transition: all 0.3s;
+        }
+      }
+    }
+    .main-content {
+      height: 100%;
+      .good-img-container {
+        width: 100%;
+        background: white;
+        .good-img {
+          width: 100%;
+          height: 750upx;
+        }
+        .price-container {
+          height: 142upx;
+          background: $theme-color;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0upx 50upx;
+          .price {
+            color: white;
+            font-size: $font-sm;
+            display: flex;
+            align-items: flex-end;
+            font-weight: bold;
+            .price-text {
+              font-size: $font-lg;
+            }
+          }
+          .time-container {
+            display: flex;
+            flex-direction: column;
+            color: white;
+            width: 276upx;
+            align-items: center;
+            justify-content: center;
+            .time-desc {
+              font-size: $font-base;
+              line-height: 1.8;
+            }
+            .time-btn {
+              width: 100%;
+              height: 58upx;
+              border-radius: 29upx;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: white;
+              color: $theme-color;
+              font-size: $font-lg;
+            }
+          }
+        }
+        .good-title-container {
+          width: 100%;
+          height: 184upx;
         }
       }
     }
