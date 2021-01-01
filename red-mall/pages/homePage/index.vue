@@ -207,42 +207,42 @@ export default {
           {
             id: 3,
             title: "蔬菜区",
-            image: require("../../assets/images/block5.png"),
+            image: require("../../assets/images/block3.png"),
           },
           {
             id: 4,
             title: "水产区",
-            image: require("../../assets/images/block6.png"),
+            image: require("../../assets/images/block4.png"),
           },
           {
             id: 5,
             title: "肉类区",
-            image: require("../../assets/images/block7.png"),
+            image: require("../../assets/images/block3.png"),
           },
           {
             id: 6,
             title: "蛋类区",
-            image: require("../../assets/images/block5.png"),
+            image: require("../../assets/images/block4.png"),
           },
           {
             id: 7,
             title: "豆制区",
-            image: require("../../assets/images/block4.png"),
+            image: require("../../assets/images/block3.png"),
           },
           {
             id: 8,
             title: "生鲜区",
-            image: require("../../assets/images/block3.png"),
+            image: require("../../assets/images/block4.png"),
           },
           {
             id: 9,
             title: "水产区",
-            image: require("../../assets/images/block7.png"),
+            image: require("../../assets/images/block3.png"),
           },
           {
             id: 10,
             title: "蔬菜区",
-            image: require("../../assets/images/block6.png"),
+            image: require("../../assets/images/block4.png"),
           },
         ],
         [
@@ -259,12 +259,12 @@ export default {
           {
             id: 3,
             title: "蔬菜区",
-            image: require("../../assets/images/block5.png"),
+            image: require("../../assets/images/block3.png"),
           },
           {
             id: 4,
             title: "水产区",
-            image: require("../../assets/images/block6.png"),
+            image: require("../../assets/images/block4.png"),
           },
         ],
       ],

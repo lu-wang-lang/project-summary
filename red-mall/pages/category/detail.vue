@@ -159,8 +159,6 @@ export default {
         picWord: '色泽诱人.富有嚼劲！大家快来买啊！骨酥肉香滋味鲜爽20多味香料的卤汤，香气饱满、浓郁，外皮绵软，肌肉脆嫩，卤汁浸入骨头之中，食后美感久久不去。',
         picList: [
           require("../../assets/images/pic1.png"),
-          require("../../assets/images/pic2.png"),
-          require("../../assets/images/pic3.png"),
           require("../../assets/images/pic4.png")
         ]
       },
