@@ -1,9 +1,11 @@
 {
   "pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
     {
-      "path": "pages/category/detail",
+      "path": "pages/mine/index",
       "style": {
-        "navigationBarTitleText": "商品信息"
+        "navigationBarTitleText": "我的",
+        "navigationBarTextStyle": "white",
+        "navigationBarBackgroundColor": "#D93025"
       }
     },
     {
@@ -21,17 +23,15 @@
       }
     },
     {
-      "path": "pages/cart/index",
+      "path": "pages/category/detail",
       "style": {
-        "navigationBarTitleText": "购物车",
-        "navigationBarTextStyle": "white",
-        "navigationBarBackgroundColor": "#D93025"
+        "navigationBarTitleText": "商品信息"
       }
     },
     {
-      "path": "pages/mine/index",
+      "path": "pages/cart/index",
       "style": {
-        "navigationBarTitleText": "我的",
+        "navigationBarTitleText": "购物车",
         "navigationBarTextStyle": "white",
         "navigationBarBackgroundColor": "#D93025"
       }
