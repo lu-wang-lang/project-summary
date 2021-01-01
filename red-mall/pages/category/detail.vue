@@ -96,7 +96,14 @@
             >
               <view class="left">
                 <view class="roune"></view>
-                <view class="line"></view>
+                <view
+                  class="line"
+                  :style="
+                    index === playList.length - 1
+                      ? 'background: transparent'
+                      : 'background: rgba(187, 187, 187, 0.48)'
+                  "
+                ></view>
               </view>
               <view class="right">
                 <view class="title">{{ play.title }}</view>
@@ -435,6 +442,22 @@ export default {
             .left {
               width: 50upx;
               height: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              .roune {
+                width: 24upx;
+                height: 24upx;
+                border-radius: 50%;
+                border: 1px solid $theme-color;
+                margin-top: 4upx;
+              }
+              .line {
+                width: 1px;
+                height: 100upx;
+                margin-top: 2upx;
+                background: rgba(187, 187, 187, 0.48);
+              }
             }
             .right {
               flex: 1;
