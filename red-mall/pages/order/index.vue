@@ -19,8 +19,13 @@
         <view class="line"></view>
       </view>
     </view>
-    <view class="order-main-container">
+    <view class="order-main-container" v-if="!isEmpty">
       <view class="order-item"></view>
+    </view>
+    <view class="order-main-container-empty" v-else>
+      <image :src="emptyImg" class="empty-img"></image>
+      <view>您还没有相关订单了</view>
+      <view class="go-shopping-btn" @click="goShopping">去购物</view>
     </view>
   </view>
 </template>
@@ -45,12 +50,30 @@ export default {
         type: 'finished',
         title: '已提货',
       }],
+      orderList: [{
+        type: 'notPay',
+      }, {
+        type: 'notReceive',
+      }, {
+        type: 'finished',
+      }, {
+        type: 'finished',
+      }, {
+        type: 'closed',
+      }],
+      isEmpty: true,
+      emptyImg: require("../../assets/images/logo.png")
     }
   },
   methods: {
     handleSearch () { },
     handleTab (index) {
       this.selectedIndex = index
+    },
+    goShopping () {
+      uni.switchTab({
+        url: '/pages/homePage/index'
+      })
     },
   },
   onLoad (options) {
@@ -146,6 +169,35 @@ export default {
       background: white;
       margin-bottom: 18upx;
       border-radius: 16upx;
+    }
+  }
+  .order-main-container-empty {
+    width: 100%;
+    padding: 0upx 14upx;
+    box-sizing: border-box;
+    margin-top: 26upx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 216upx;
+    color: rgba(16, 16, 16, 0.57);
+    font-size: $font-base;
+    .empty-img {
+      width: 290upx;
+      height: 290upx;
+      margin-bottom: 30upx;
+    }
+    .go-shopping-btn {
+      width: 598upx;
+      height: 76upx;
+      background: $theme-color;
+      border-radius: 38upx;
+      color: white;
+      font-size: $font-lg;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 66upx auto;
     }
   }
 }
