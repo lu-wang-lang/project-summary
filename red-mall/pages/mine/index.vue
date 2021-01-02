@@ -28,7 +28,7 @@
       </view>
       <view class="tag-container">
         <view class="tag-item" v-for="(tag, index) of tagList" :key="index">
-          <view class="top">
+          <view class="top" @click="goOrder(tag.name)">
             <image :src="tag.image" class="tag-img"></image>
           </view>
           <view class="bottom">{{ tag.title }}</view>
@@ -91,15 +91,19 @@ export default {
         score: 3911,
       },
       tagList: [{
+        name: 'total',
         title: '全部订单',
         image: require("../../assets/images/antFill-bulb.svg")
       }, {
+        name: 'notPay',
         title: '待付款',
         image: require("../../assets/images/mb-question.svg")
       }, {
+        name: 'notReceive',
         title: '待提货',
         image: require("../../assets/images/info-circle.svg")
       }, {
+        name: 'finished',
         title: '已提货',
         image: require("../../assets/images/customer-service.svg")
       }],
@@ -123,6 +127,11 @@ export default {
     },
     handleTab (type) {
       this.selectedTab = type
+    },
+    goOrder (type) {
+      uni.navigateTo({
+        url: `/pages/order/index?type=${type}`
+      })
     },
   }
 }
