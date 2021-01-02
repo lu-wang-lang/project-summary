@@ -19,6 +19,9 @@
         <view class="line"></view>
       </view>
     </view>
+    <view class="order-main-container">
+      <view class="order-item"></view>
+    </view>
   </view>
 </template>
 
@@ -130,6 +133,19 @@ export default {
       .line {
         background: $theme-color;
       }
+    }
+  }
+  .order-main-container {
+    width: 100%;
+    padding: 0upx 14upx;
+    box-sizing: border-box;
+    margin-top: 26upx;
+    .order-item {
+      width: 100%;
+      height: 420upx;
+      background: white;
+      margin-bottom: 18upx;
+      border-radius: 16upx;
     }
   }
 }
