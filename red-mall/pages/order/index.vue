@@ -1,8 +1,23 @@
 <template>
   <view class="order-container">
-    <view class="search" @click="handleSearch">
+    <view class="search-container">
       <image class="search-img" :src="searchImg"></image>
-      <text class="placeholder">搜索商品 - 好货等你</text>
+      <input
+        class="search"
+        confirm-type="search"
+        placeholder="商品名称（仅支持三个月以内的订单）"
+      />
+    </view>
+    <view class="tabs-container">
+      <view
+        :class="selectedIndex === index ? 'tab-item active' : 'tab-item'"
+        v-for="(tab, index) of tabList"
+        :key="index"
+        @click="handleTab(index)"
+      >
+        <view>{{ tab.title }}</view>
+        <view class="line"></view>
+      </view>
     </view>
   </view>
 </template>
@@ -12,10 +27,11 @@ export default {
   name: 'Order',
   data () {
     return {
-      pageType: 'total',
+      searchImg: require("../../assets/images/mb-search.svg"),
+      selectedIndex: 0,
       tabList: [{
         type: 'total',
-        title: '全部订单',
+        title: '全部',
       }, {
         type: 'notPay',
         title: '待付款',
@@ -25,11 +41,33 @@ export default {
       }, {
         type: 'finished',
         title: '已提货',
-      }]
+      }],
     }
   },
+  methods: {
+    handleSearch () { },
+    handleTab (index) {
+      this.selectedIndex = index
+    },
+  },
   onLoad (options) {
-    this.pageType = options.type ? options.type : 'total'
+    switch (options.type) {
+      case 'total':
+        this.selectedIndex = 0
+        break;
+      case 'notPay':
+        this.selectedIndex = 1
+        break;
+      case 'notReceive':
+        this.selectedIndex = 2
+        break;
+      case 'finished':
+        this.selectedIndex = 3
+        break;
+      default:
+        this.selectedIndex = 0
+        break;
+    }
   }
 }
 </script>
@@ -38,25 +76,60 @@ export default {
 .order-container {
   width: 100vw;
   height: 100vh;
-  .search {
-    width: 704upx;
-    height: 68upx;
-    background: white;
-    border-radius: 16upx;
-    margin: 18upx auto;
-    margin-bottom: 0upx;
-    display: flex;
-    align-items: center;
-    padding: 0upx 18upx;
-    color: #828282;
+  background: $grey-bg;
+  .search-container {
+    width: 100%;
+    padding-top: 24upx;
     box-sizing: border-box;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
     .search-img {
       width: 42upx;
       height: 42upx;
+      position: absolute;
+      left: 38upx;
+      top: 38upx;
     }
-    .placeholder {
+    .search {
+      width: 704upx;
+      height: 68upx;
+      padding-left: 70upx;
+      padding-right: 18upx;
+      box-sizing: border-box;
+      border-radius: 34upx;
+      color: rgba(136, 136, 136, 1);
+      background: rgba(136, 136, 136, 0.1);
+    }
+  }
+  .tabs-container {
+    width: 100%;
+    height: 108upx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: white;
+    .tab-item {
+      width: 84upx;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       font-size: $font-base;
-      margin-left: 14upx;
+      color: rgba(16, 16, 16, 1);
+      .line {
+        width: 32upx;
+        height: 6upx;
+        background: transparent;
+        margin-top: 10upx;
+      }
+    }
+    .active {
+      color: $theme-color;
+      .line {
+        background: $theme-color;
+      }
     }
   }
 }
