@@ -12,8 +12,24 @@ export default {
   name: 'Order',
   data () {
     return {
-
+      pageType: 'total',
+      tabList: [{
+        type: 'total',
+        title: '全部订单',
+      }, {
+        type: 'notPay',
+        title: '待付款',
+      }, {
+        type: 'notReceive',
+        title: '待提货',
+      }, {
+        type: 'finished',
+        title: '已提货',
+      }]
     }
+  },
+  onLoad (options) {
+    this.pageType = options.type ? options.type : 'total'
   }
 }
 </script>
