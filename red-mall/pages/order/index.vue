@@ -96,7 +96,8 @@ export default {
           title: "已提货",
         },
       ],
-      orderList: [
+      orderList: [],
+      totalList: [
         {
           type: "notPay",
           name: "未付款",
@@ -108,8 +109,8 @@ export default {
           price: 169.0,
         },
         {
-          type: "notReceive",
-          name: "待提货",
+          type: "notPay",
+          name: "未付款",
           orderTime: "2017-06-24",
           orderImg: require("../../assets/images/good.png"),
           title: "卤将军 麻辣鸭掌 10/袋 约280g/袋",
@@ -157,15 +158,43 @@ export default {
     handleSearch() {},
     handleTab(index) {
       this.selectedIndex = index;
+      this.initData();
     },
     goShopping() {
       uni.switchTab({
         url: "/pages/homePage/index",
       });
     },
+    initData() {
+      let type = "";
+      this.selectedIndex = this.selectedIndex ? this.selectedIndex : 0;
+      switch (this.selectedIndex) {
+        case 0:
+          break;
+        case 1:
+          type = "notPay";
+          break;
+        case 2:
+          type = "notReceive";
+          break;
+        case 3:
+          type = "finished";
+          break;
+        default:
+          break;
+      }
+      if (type) {
+        this.orderList = this.totalList.filter((item) => {
+          return item.type === type;
+        });
+      } else {
+        this.orderList = this.totalList;
+      }
+      this.isEmpty = this.orderList.length === 0;
+    },
   },
-  mounted() {
-    this.isEmpty = this.orderList.length === 0;
+  onShow() {
+    this.initData()
   },
   onLoad(options) {
     switch (options.type) {
@@ -185,6 +214,7 @@ export default {
         this.selectedIndex = 0;
         break;
     }
+    this.initData()
   },
 };
 </script>
