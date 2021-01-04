@@ -20,7 +20,30 @@
       </view>
     </view>
     <view class="order-main-container" v-if="!isEmpty">
-      <view class="order-item"></view>
+      <view class="order-item" v-for="(order, index) of orderList" :key="index">
+        <view class="top">
+          <view class="order-time">{{ order.orderTime }}</view>
+          <view class="status">{{ order.name }}</view>
+        </view>
+        <view class="middle">
+          <image class="order-img" :src="order.orderImg"></image>
+          <view class="middle-right">
+            <view class="title" v-html="order.title"></view>
+            <view class="order-bottom">
+              <view class="get-time">{{order.getTime}}</view>
+              <view class="sale-count">X{{order.saleCount}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="bottom">
+          <view class="bottom-top">
+            <text class="sale-count">共{{order.saleCount}}件</text>
+            <text class="desc">应付总额：</text>
+            <text class="bottom-price">￥{{order.price}}</text>
+          </view>
+          <view class="order-btn">再次购买</view>
+        </view>
+      </view>
     </view>
     <view class="order-main-container-empty" v-else>
       <image :src="emptyImg" class="empty-img"></image>
@@ -32,77 +55,127 @@
 
 <script>
 export default {
-  name: 'Order',
-  data () {
+  name: "Order",
+  data() {
     return {
       searchImg: require("../../assets/images/mb-search.svg"),
       selectedIndex: 0,
-      tabList: [{
-        type: 'total',
-        title: '全部',
-      }, {
-        type: 'notPay',
-        title: '待付款',
-      }, {
-        type: 'notReceive',
-        title: '待提货',
-      }, {
-        type: 'finished',
-        title: '已提货',
-      }],
-      orderList: [{
-        type: 'notPay',
-      }, {
-        type: 'notReceive',
-      }, {
-        type: 'finished',
-      }, {
-        type: 'finished',
-      }, {
-        type: 'closed',
-      }],
+      tabList: [
+        {
+          type: "total",
+          title: "全部",
+        },
+        {
+          type: "notPay",
+          title: "待付款",
+        },
+        {
+          type: "notReceive",
+          title: "待提货",
+        },
+        {
+          type: "finished",
+          title: "已提货",
+        },
+      ],
+      orderList: [
+        {
+          type: "notPay",
+          name: "未付款",
+          orderTime: "2017-06-24",
+          orderImg: require("../../assets/images/good.png"),
+          title: "卤将军 麻辣鸭掌 10/袋 约280g/袋",
+          getTime: "08月20日提货",
+          saleCount: 2,
+          price: 169.0,
+        },
+        {
+          type: "notReceive",
+          name: "待提货",
+          orderTime: "2017-06-24",
+          orderImg: require("../../assets/images/good.png"),
+          title: "卤将军 麻辣鸭掌 10/袋 约280g/袋",
+          getTime: "08月20日提货",
+          saleCount: 2,
+          price: 169.0,
+        },
+        {
+          type: "finished",
+          name: "交易成功",
+          orderTime: "2017-06-24",
+          orderImg: require("../../assets/images/good.png"),
+          title: "卤将军 麻辣鸭掌 10/袋 约280g/袋",
+          getTime: "08月20日提货",
+          saleCount: 2,
+          price: 169.0,
+        },
+        {
+          type: "finished",
+          name: "交易成功",
+          orderTime: "2017-06-24",
+          orderImg: require("../../assets/images/good.png"),
+          title: "卤将军 麻辣鸭掌 10/袋 约280g/袋",
+          getTime: "08月20日提货",
+          saleCount: 2,
+          price: 169.0,
+        },
+        {
+          type: "closed",
+          name: "交易关闭",
+          orderTime: "2017-06-24",
+          orderImg: require("../../assets/images/good.png"),
+          title: "卤将军 麻辣鸭掌 10/袋 约280g/袋",
+          getTime: "08月20日提货",
+          saleCount: 2,
+          price: 169.0,
+        },
+      ],
       isEmpty: true,
-      emptyImg: require("../../assets/images/logo.png")
-    }
+      emptyImg: require("../../assets/images/logo.png"),
+    };
   },
   methods: {
-    handleSearch () { },
-    handleTab (index) {
-      this.selectedIndex = index
+    handleSearch() {},
+    handleTab(index) {
+      this.selectedIndex = index;
     },
-    goShopping () {
+    goShopping() {
       uni.switchTab({
-        url: '/pages/homePage/index'
-      })
+        url: "/pages/homePage/index",
+      });
     },
   },
-  onLoad (options) {
+  mounted() {
+    this.isEmpty = this.orderList.length === 0;
+  },
+  onLoad(options) {
     switch (options.type) {
-      case 'total':
-        this.selectedIndex = 0
+      case "total":
+        this.selectedIndex = 0;
         break;
-      case 'notPay':
-        this.selectedIndex = 1
+      case "notPay":
+        this.selectedIndex = 1;
         break;
-      case 'notReceive':
-        this.selectedIndex = 2
+      case "notReceive":
+        this.selectedIndex = 2;
         break;
-      case 'finished':
-        this.selectedIndex = 3
+      case "finished":
+        this.selectedIndex = 3;
         break;
       default:
-        this.selectedIndex = 0
+        this.selectedIndex = 0;
         break;
     }
-  }
-}
+  },
+};
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .order-container {
   width: 100vw;
   height: 100vh;
   background: $grey-bg;
+  overflow: hidden;
   .search-container {
     width: 100%;
     padding-top: 24upx;
@@ -163,12 +236,101 @@ export default {
     padding: 0upx 14upx;
     box-sizing: border-box;
     margin-top: 26upx;
+    padding-bottom: 26upx;
+    height: calc(100% - 178upx);
+    overflow-y: auto;
     .order-item {
       width: 100%;
-      height: 420upx;
       background: white;
       margin-bottom: 18upx;
       border-radius: 16upx;
+      padding: 0upx 22upx;
+      box-sizing: border-box;
+      .top {
+        width: 100%;
+        box-sizing: border-box;
+        height: 70upx;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 26upx;
+        color: #101010;
+      }
+    }
+    .middle {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      .order-img {
+        margin: 10upx;
+        margin-right: 22upx;
+        width: 150upx;
+        height: 150upx;
+      }
+      .middle-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        .title {
+          width: 100%;
+          font-size: $font-base;
+          color: #101010;
+          margin-bottom: 40upx;
+          font-weight: bold;
+        }
+        .order-bottom{
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: $font-sm;
+          color:rgba(133, 133, 133, 1);
+          .sale-count{
+            color: rgba(16, 16, 16, 0.99);
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    .bottom{
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+      .bottom-top{
+        width: 100%;
+        height: 80upx;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+         color:rgba(133, 133, 133, 1);
+         font-size: $font-sm;
+         .sale-count{
+           margin-right: 10upx;
+         }
+         .desc{
+           margin-right: 12upx;
+         }
+         .bottom-price{
+            color: rgba(16, 16, 16, 0.99);
+            font-weight: bold;
+            font-size: $font-base;
+         }
+      }
+      .order-btn{
+        width: 160upx;
+        height: 52upx;
+        border-radius:26upx;
+        border:1px solid $theme-color;
+        color:$theme-color;
+        font-size: 26upx;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20upx;
+      }
     }
   }
   .order-main-container-empty {
