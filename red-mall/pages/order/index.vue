@@ -59,8 +59,18 @@
             <text class="desc">应付总额：</text>
             <text class="bottom-price">￥{{ order.price }}</text>
           </view>
-          <view class="order-btn" v-if="order.type === 'finished'||order.type=='closed'">再次购买</view>
-          <view class="order-btn order-btn-red" v-else-if="order.type === 'notPay'">立即付款</view>
+          <view
+            class="order-btn"
+            v-if="order.type === 'finished' || order.type == 'closed'"
+            @click="buy('again', order)"
+            >再次购买</view
+          >
+          <view
+            class="order-btn order-btn-red"
+            v-else-if="order.type === 'notPay'"
+            @click="buy('once', order)"
+            >立即付款</view
+          >
         </view>
       </view>
     </view>
@@ -166,6 +176,13 @@ export default {
         url: "/pages/homePage/index",
       });
     },
+    buy(type, order) {
+      if (type === "again") {
+        uni.navigateTo({
+          url: "/pages/category/detail",
+        });
+      }
+    },
     initData() {
       let type = "";
       this.selectedIndex = this.selectedIndex ? this.selectedIndex : 0;
@@ -195,7 +212,7 @@ export default {
     },
   },
   onShow() {
-    this.initData()
+    this.initData();
   },
   onLoad(options) {
     switch (options.type) {
@@ -215,7 +232,7 @@ export default {
         this.selectedIndex = 0;
         break;
     }
-    this.initData()
+    this.initData();
   },
 };
 </script>
@@ -395,9 +412,9 @@ export default {
         justify-content: center;
         margin-bottom: 20upx;
       }
-      .order-btn-red{
+      .order-btn-red {
         background: $theme-color;
-        color:white;
+        color: white;
       }
     }
   }
