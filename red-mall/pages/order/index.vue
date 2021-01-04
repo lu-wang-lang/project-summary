@@ -23,23 +23,41 @@
       <view class="order-item" v-for="(order, index) of orderList" :key="index">
         <view class="top">
           <view class="order-time">{{ order.orderTime }}</view>
-          <view class="status">{{ order.name }}</view>
+          <view
+            :class="
+              order.type === 'notPay' || order.type === 'notReceive'
+                ? 'status red'
+                : 'status'
+            "
+          >
+            <text>{{ order.name }}</text>
+            <text
+              v-if="!(order.type === 'notPay' || order.type === 'notReceive')"
+              class="text-line"
+              >|</text
+            >
+            <image
+              :src="deleteImg"
+              class="delete-img"
+              v-if="!(order.type === 'notPay' || order.type === 'notReceive')"
+            ></image>
+          </view>
         </view>
         <view class="middle">
           <image class="order-img" :src="order.orderImg"></image>
           <view class="middle-right">
             <view class="title" v-html="order.title"></view>
             <view class="order-bottom">
-              <view class="get-time">{{order.getTime}}</view>
-              <view class="sale-count">X{{order.saleCount}}</view>
+              <view class="get-time">{{ order.getTime }}</view>
+              <view class="sale-count">X{{ order.saleCount }}</view>
             </view>
           </view>
         </view>
         <view class="bottom">
           <view class="bottom-top">
-            <text class="sale-count">共{{order.saleCount}}件</text>
+            <text class="sale-count">共{{ order.saleCount }}件</text>
             <text class="desc">应付总额：</text>
-            <text class="bottom-price">￥{{order.price}}</text>
+            <text class="bottom-price">￥{{ order.price }}</text>
           </view>
           <view class="order-btn">再次购买</view>
         </view>
@@ -132,6 +150,7 @@ export default {
       ],
       isEmpty: true,
       emptyImg: require("../../assets/images/logo.png"),
+      deleteImg: require("../../assets/images/delete.svg"),
     };
   },
   methods: {
@@ -236,7 +255,7 @@ export default {
     padding: 0upx 14upx;
     box-sizing: border-box;
     margin-top: 26upx;
-    padding-bottom: 26upx;
+    padding-bottom: 60rpx;
     height: calc(100% - 178upx);
     overflow-y: auto;
     .order-item {
@@ -256,6 +275,20 @@ export default {
         justify-content: space-between;
         font-size: 26upx;
         color: #101010;
+        .status {
+          display: flex;
+          align-items: center;
+          .text-line {
+            margin: 6upx;
+          }
+          .delete-img {
+            width: 32upx;
+            height: 32upx;
+          }
+        }
+        .red {
+          color: $theme-color;
+        }
       }
     }
     .middle {
@@ -272,7 +305,7 @@ export default {
         flex: 1;
         display: flex;
         flex-direction: column;
-        align-items: center; 
+        align-items: center;
         .title {
           width: 100%;
           font-size: $font-base;
@@ -280,51 +313,51 @@ export default {
           margin-bottom: 40upx;
           font-weight: bold;
         }
-        .order-bottom{
+        .order-bottom {
           width: 100%;
           display: flex;
           align-items: center;
           justify-content: space-between;
           font-size: $font-sm;
-          color:rgba(133, 133, 133, 1);
-          .sale-count{
+          color: rgba(133, 133, 133, 1);
+          .sale-count {
             color: rgba(16, 16, 16, 0.99);
             font-weight: bold;
           }
         }
       }
     }
-    .bottom{
+    .bottom {
       width: 100%;
       display: flex;
       align-items: flex-end;
       flex-direction: column;
-      .bottom-top{
+      .bottom-top {
         width: 100%;
         height: 80upx;
         display: flex;
         align-items: center;
         justify-content: flex-end;
-         color:rgba(133, 133, 133, 1);
-         font-size: $font-sm;
-         .sale-count{
-           margin-right: 10upx;
-         }
-         .desc{
-           margin-right: 12upx;
-         }
-         .bottom-price{
-            color: rgba(16, 16, 16, 0.99);
-            font-weight: bold;
-            font-size: $font-base;
-         }
+        color: rgba(133, 133, 133, 1);
+        font-size: $font-sm;
+        .sale-count {
+          margin-right: 10upx;
+        }
+        .desc {
+          margin-right: 12upx;
+        }
+        .bottom-price {
+          color: rgba(16, 16, 16, 0.99);
+          font-weight: bold;
+          font-size: $font-base;
+        }
       }
-      .order-btn{
+      .order-btn {
         width: 160upx;
         height: 52upx;
-        border-radius:26upx;
-        border:1px solid $theme-color;
-        color:$theme-color;
+        border-radius: 26upx;
+        border: 1px solid $theme-color;
+        color: $theme-color;
         font-size: 26upx;
         display: flex;
         align-items: center;
