@@ -59,7 +59,8 @@
             <text class="desc">应付总额：</text>
             <text class="bottom-price">￥{{ order.price }}</text>
           </view>
-          <view class="order-btn">再次购买</view>
+          <view class="order-btn" v-if="order.type === 'finished'||order.type=='closed'">再次购买</view>
+          <view class="order-btn order-btn-red" v-else-if="order.type === 'notPay'">立即付款</view>
         </view>
       </view>
     </view>
@@ -129,8 +130,8 @@ export default {
           price: 169.0,
         },
         {
-          type: "finished",
-          name: "交易成功",
+          type: "notReceive",
+          name: "待提货",
           orderTime: "2017-06-24",
           orderImg: require("../../assets/images/good.png"),
           title: "卤将军 麻辣鸭掌 10/袋 约280g/袋",
@@ -393,6 +394,10 @@ export default {
         align-items: center;
         justify-content: center;
         margin-bottom: 20upx;
+      }
+      .order-btn-red{
+        background: $theme-color;
+        color:white;
       }
     }
   }
