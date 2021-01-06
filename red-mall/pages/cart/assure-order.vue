@@ -50,7 +50,18 @@
       <button class="buy-btn" @click="goBuy">提交订单</button>
     </view>
     <uni-popup id="popup" ref="popup" :type="'bottom'" @change="change">
-      <view class="popup-content">popup 内容，此示例没有动画效果</view>
+      <view class="popup-content">
+        <view class="hair">{{ order.getTime }}</view>
+        <view class="desc">此商品需要您到店自提，请仔细确认地址！</view>
+        <view class="pop-address">
+          <view class="top">自提门店：{{ order.getHouse }}</view>
+          <view class="bottom">{{ order.realAddress }}</view>
+        </view>
+        <view class="btn-container">
+          <button class="cancel-btn btn" @click="cancelBtn">取消订单</button>
+          <button class="btn" @click="sureBtn">确认订单</button>
+        </view>
+      </view>
     </uni-popup>
   </view>
 </template>
@@ -117,6 +128,9 @@ export default {
           },
         ],
         totalPrice: 1000,
+        getTime: "08月20日提货",
+        getHouse: "岳麓梅溪湖街道嘉顺苑小区5栋芙蓉兴盛店",
+        realAddress: "湖南省长沙市岳麓区梅溪湖街道嘉顺苑小区5栋103",
       },
       shop: {
         name: "岳麓区梅溪湖街道东方红小区快乐惠店",
@@ -132,6 +146,8 @@ export default {
     change(e) {
       console.log("popup " + e.type + " 状态", e.show);
     },
+    cancelBtn() {},
+    sureBtn() {},
   },
 };
 </script>
@@ -351,9 +367,70 @@ export default {
   }
   .popup-content {
     width: 100%;
-    height: 484upx;
     background-color: #fff;
-    padding: 15px;
+    padding: 0upx 32upx;
+    border-top-left-radius: 40upx;
+    border-top-right-radius: 40upx;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .hair {
+      width: 400upx;
+      height: 76upx;
+      background: #ec0d0d;
+      color: white;
+      font-size: $font-base;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom-left-radius: 16upx;
+      border-bottom-right-radius: 16upx;
+    }
+    .desc {
+      margin: 20upx auto;
+      color: $theme-color;
+      font-size: $font-base;
+    }
+    .pop-address {
+      width: 100%;
+      background: rgba(187, 187, 187, 0.28);
+      padding: 28upx;
+      box-sizing: border-box;
+      font-size: $font-base;
+      color: rgba(187, 187, 187, 1);
+      text-align: center;
+      border-radius: 16upx;
+      .top {
+        color: rgba(16, 16, 16, 1);
+        font-size: $font-lg;
+        font-weight: bold;
+        margin-bottom: 18upx;
+        line-height: 1.7;
+      }
+    }
+    .btn-container {
+      width: 100%;
+      padding: 24upx 30upx;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .btn {
+        width: 268upx;
+        height: 80upx;
+        border-radius: 40upx;
+        background: $theme-color;
+        color: white;
+        font-size: $font-base;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .cancel-btn {
+        background: #fbab07;
+      }
+    }
   }
 }
 </style>
