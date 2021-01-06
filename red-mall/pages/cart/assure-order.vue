@@ -49,14 +49,18 @@
       </view>
       <button class="buy-btn" @click="goBuy">提交订单</button>
     </view>
+    <uni-popup id="popup" ref="popup" :type="'bottom'" @change="change">
+      <view class="popup-content">popup 内容，此示例没有动画效果</view>
+    </uni-popup>
   </view>
 </template>
 
 <script>
 import uniNumberBox from "../../components/uni-number-box";
+import uniPopup from "../../components/uni-popup/uni-popup.vue";
 export default {
   name: "AssureOrder",
-  components: { uniNumberBox },
+  components: { uniNumberBox, uniPopup },
   data() {
     return {
       owner: {
@@ -122,7 +126,12 @@ export default {
     };
   },
   methods: {
-    goBuy() {},
+    goBuy() {
+      this.$refs.popup.open();
+    },
+    change(e) {
+      console.log("popup " + e.type + " 状态", e.show);
+    },
   },
 };
 </script>
@@ -339,6 +348,12 @@ export default {
       align-items: center;
       justify-content: center;
     }
+  }
+  .popup-content {
+    width: 100%;
+    height: 484upx;
+    background-color: #fff;
+    padding: 15px;
   }
 }
 </style>
