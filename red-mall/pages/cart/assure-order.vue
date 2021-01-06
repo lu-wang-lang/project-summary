@@ -146,8 +146,12 @@ export default {
     change(e) {
       console.log("popup " + e.type + " 状态", e.show);
     },
-    cancelBtn() {},
-    sureBtn() {},
+    cancelBtn() {
+      this.$refs.popup.close();
+    },
+    sureBtn() {
+      this.$refs.popup.close();
+    },
   },
 };
 </script>
