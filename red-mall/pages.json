@@ -29,6 +29,14 @@
       }
     },
     {
+      "path": "pages/cart/assure-order",
+      "style": {
+        "navigationBarTitleText": "确认订单",
+        "navigationBarTextStyle": "white",
+        "navigationBarBackgroundColor": "#D93025"
+      }
+    },
+    {
       "path": "pages/mine/index",
       "style": {
         "navigationBarTitleText": "我的",

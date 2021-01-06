@@ -121,7 +121,7 @@ export default {
           this.selectedCount++;
         }
       });
-      this.totalPrice = this.totalPrice.toFixed(2)
+      this.totalPrice = this.totalPrice.toFixed(2);
     },
     handleChangeAll() {
       this.isSelectedAll = !this.isSelectedAll;
@@ -142,10 +142,16 @@ export default {
     },
     goBuy() {
       if (this.selectedCount === 0) {
-        console.log("toast");
+        uni.showToast({
+          icon: "none",
+          title: "请先选择商品！",
+          duration: 2000,
+        });
         return;
       }
-      console.log("去结算");
+      uni.navigateTo({
+        url: "/pages/cart/assure-order",
+      });
     },
   },
 };
