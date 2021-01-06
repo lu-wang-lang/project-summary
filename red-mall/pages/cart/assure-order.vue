@@ -34,6 +34,13 @@
           </view>
         </view>
       </view>
+      <view class="tips-container">
+        <image :src="vertifyImg" class="vertify-img"></image>
+        <view class="main-text"
+          >如您购买的商品有任何问题，请直接与购买门店
+          联系，门店会为您处理，让您售后无忧</view
+        >
+      </view>
     </view>
     <view class="footer">
       <view class="price-container">
@@ -111,7 +118,11 @@ export default {
         name: "岳麓区梅溪湖街道东方红小区快乐惠店",
         address: "门店地址：湖南省长沙市岳麓区梅西湖街道建顺源9栋2单元",
       },
+      vertifyImg: require("../../assets/images/verified-user.svg"),
     };
+  },
+  methods: {
+    goBuy() {},
   },
 };
 </script>
@@ -276,6 +287,21 @@ export default {
             }
           }
         }
+      }
+    }
+    .tips-container {
+      margin: 60upx 48upx;
+      display: flex;
+      padding: 26upx;
+      font-size: 26upx;
+      color: rgba(16, 16, 16, 1);
+      line-height: 1.5;
+      background: rgba(250, 79, 81, 0.22);
+      border-radius: 16upx;
+      .vertify-img {
+        width: 48upx;
+        height: 48upx;
+        margin-right: 20upx;
       }
     }
   }
