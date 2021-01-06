@@ -59,6 +59,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    selectedIndex:{
+      type:Number,
+      default:0
     }
   },
   data () {
@@ -72,7 +76,7 @@ export default {
     },
     inputValue (newVal, oldVal) {
       if (+newVal !== +oldVal) {
-        this.$emit("change", newVal);
+        this.$emit("change",this.selectedIndex, newVal);
       }
     }
   },
