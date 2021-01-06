@@ -43,11 +43,11 @@
       </label>
       <view class="price-container">
         合计：
-        <text class="price">￥{{ totalPrice }}</text>
+        <text class="price">￥{{ totalPrice||0 }}</text>
       </view>
       <button :class="selectedCount > 0 ? 'buy-btn active' : 'buy-btn'" @click="goBuy">
         去结算
-        <text v-if="selectedCount > 0">（{{ selectedCount }}）</text>
+        <text v-if="selectedCount > 0">（{{ selectedCount||0 }}）</text>
       </button>
     </view>
   </view>
